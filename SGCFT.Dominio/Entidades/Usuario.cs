@@ -26,7 +26,6 @@ namespace SGCFT.Dominio.Entidades
             else
                 this.Cnpj = documento;
         }
-
     
         public int Id { get; set; }
         public long? Cpf { get; private set; }
