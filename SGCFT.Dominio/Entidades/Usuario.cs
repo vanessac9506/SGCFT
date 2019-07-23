@@ -30,7 +30,7 @@ namespace SGCFT.Dominio.Entidades
         public int Id { get; set; }
         public long? Cpf { get; private set; }
         public long? Cnpj { get; private set; }
-        public string Nome { get; private set; }
+        public string Nome { get; private set; }    
         public string Senha { get; private set; }
         public string Email { get; private set; }
 

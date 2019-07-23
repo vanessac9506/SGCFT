@@ -14,11 +14,11 @@ namespace SGCFT.Dominio.Entidades
 
         }
 
-        public Treinamento(string tema, Usuario autor)
+        public Treinamento(string tema, int autor, int tipoTreinamento)
         {
             this.Tema = tema;
-            this.Autor = autor;
-            this.IdAutor = autor.Id;
+            this.IdAutor = autor;
+            this.TipoTreinamento = tipoTreinamento;
         }
 
         public int Id { get; set; }
@@ -26,6 +26,8 @@ namespace SGCFT.Dominio.Entidades
         public Usuario Autor { get; set; }
         public int IdAutor { get; set; }
         public List<Modulo> Modulos { get; set; }
+        public int TipoTreinamento { get; set; }
+        public string Senha { get; set; }
 
         public Retorno ValidarDominio()
         {
@@ -34,12 +36,12 @@ namespace SGCFT.Dominio.Entidades
             if (string.IsNullOrEmpty(this.Tema) || string.IsNullOrWhiteSpace(this.Tema))
                 retorno.AdicionarErro("Tema inválido!");
 
-            if (this.Autor == null)
-                retorno.AdicionarErro("Autor inválida!");
+            if(this.IdAutor <= 0)
+                retorno.AdicionarErro("Autor inválido!");
 
-            //falta ID AUTOR (PUXAR PELO AUTOR???)
-            // PRECISA FAZER DO MÓDULO? PQ TENHO QUE CRIAR O TREINAMENTO ANTES.
-
+            if (this.IdAutor <= 0)
+                retorno.AdicionarErro("Tipo de treinamento inválido!");
+            // não tem necessidade de validar a lista de módulo porque pode ser nula
             return retorno;
         }
     }

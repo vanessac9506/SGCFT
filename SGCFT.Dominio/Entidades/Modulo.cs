@@ -28,7 +28,7 @@ namespace SGCFT.Dominio.Entidades
         {
             Retorno retorno = new Retorno();
 
-            if (this.IdTreinamento.ToString() == null)
+            if (this.IdTreinamento <= 0)
                 retorno.AdicionarErro("Treinamento inválido!");
 
             if (string.IsNullOrEmpty(this.Titulo) || string.IsNullOrWhiteSpace(this.Titulo))

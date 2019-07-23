@@ -31,11 +31,11 @@ namespace SGCFT.Dominio.Entidades
         {
             Retorno retorno = new Retorno();
 
-            if (this.IdUsuario.ToString() == null) //tava dando um erro para comparar int 
+            if (this.IdUsuario<= 0 ) 
                 retorno.AdicionarErro("Usuario inválido!");
 
-            if (this.IdPergunta.ToString() == null)
-                retorno.AdicionarErro("Pergunta inválido!");
+            if (this.IdPergunta <= 0)
+                retorno.AdicionarErro("Pergunta inválida!");
 
             if (string.IsNullOrEmpty(this.Solucao) || string.IsNullOrWhiteSpace(this.Solucao))
                 retorno.AdicionarErro("Resposta inválida!");

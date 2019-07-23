@@ -15,6 +15,7 @@ namespace SGCFT.Dominio.Teste
     [TestClass]
     public class UsuarioServicoTeste
     {
+        
         [TestMethod]
         public void CriarNovoUsuarioComEmailJaExistente()
         {
@@ -22,7 +23,6 @@ namespace SGCFT.Dominio.Teste
             string senha = "valuneca";
             string email = "teste@teste.com";
             long cpf = 12904202625;
-
             Usuario usuario = new Usuario(nome, senha, email, cpf, true);
 
             IUsuarioRepositorio usuarioRepositorio = new UsuarioRepositorioMock(true,false);
@@ -86,7 +86,7 @@ namespace SGCFT.Dominio.Teste
 
         public void Inserir(Usuario usuario)
         {
-           
+            //FALTA FAZER*********  
         }
 
         public bool ValidarDocumentoCadastrado(long documento, bool isCpf)
