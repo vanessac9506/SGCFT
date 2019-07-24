@@ -27,6 +27,11 @@ namespace SGCFT.Dominio.Servicos
                 retorno.AdicionarErro("Pergunta não informada");
                 return retorno;
             }
+
+            retorno = pergunta.ValidarDominio();
+            if (retorno.Sucesso)
+                _perguntaRepositorio.Inserir(pergunta);
+
             return retorno;
         }
     }
