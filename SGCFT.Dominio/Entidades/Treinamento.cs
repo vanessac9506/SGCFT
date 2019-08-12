@@ -39,9 +39,12 @@ namespace SGCFT.Dominio.Entidades
             if(this.IdAutor <= 0)
                 retorno.AdicionarErro("Autor inválido!");
 
-            if (this.IdAutor <= 0)
+            if (this.TipoTreinamento <= 0)
                 retorno.AdicionarErro("Tipo de treinamento inválido!");
             // não tem necessidade de validar a lista de módulo porque pode ser nula
+
+            if (string.IsNullOrEmpty(this.Senha) || string.IsNullOrWhiteSpace(this.Senha))
+                retorno.AdicionarErro("Senha inválido!");
             return retorno;
         }
     }

@@ -14,7 +14,7 @@ namespace SGCFT.Dominio.Entidades
 
         }
 
-        public Modulo(int idTreinamento, string titulo) // COLOCAR O TREINAMENTO????
+        public Modulo(int idTreinamento, string titulo) 
         {
             this.IdTreinamento = idTreinamento;
             this.Titulo = titulo;

@@ -42,12 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contratos\Repositorios\IAlternativaRepositorio.cs" />
+    <Compile Include="Contratos\Repositorios\IModuloRepositorio.cs" />
     <Compile Include="Contratos\Repositorios\IPerguntaRepositorio.cs" />
     <Compile Include="Contratos\Repositorios\IRespostaRepositorio.cs" />
+    <Compile Include="Contratos\Repositorios\ITreinamentoRepositorio.cs" />
     <Compile Include="Contratos\Repositorios\IUsuarioRepositorio.cs" />
     <Compile Include="Contratos\Servicos\IAlternativaServico.cs" />
+    <Compile Include="Contratos\Servicos\IModuloServico.cs" />
     <Compile Include="Contratos\Servicos\IPerguntaServico.cs" />
     <Compile Include="Contratos\Servicos\IRespostaServico.cs" />
+    <Compile Include="Contratos\Servicos\ITreinamentoServico.cs" />
     <Compile Include="Contratos\Servicos\IUsuarioServico.cs" />
     <Compile Include="Entidades\Alternativa.cs" />
     <Compile Include="Entidades\Modulo.cs" />
@@ -58,8 +62,10 @@
     <Compile Include="Entidades\Video.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicos\AlternativaServico.cs" />
+    <Compile Include="Servicos\ModuloServico.cs" />
     <Compile Include="Servicos\PerguntaServico.cs" />
     <Compile Include="Servicos\RespostaServico.cs" />
+    <Compile Include="Servicos\TreinamentoServico.cs" />
     <Compile Include="Servicos\UsuarioServico.cs" />
   </ItemGroup>
   <ItemGroup />

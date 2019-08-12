@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace SGCFT.Dominio.Contratos.Servicos
 {
-    public interface IUsuarioServico
+    public interface ITreinamentoServico
     {
-        Retorno InserirUsuario(Usuario usuario);
+        Retorno InserirTreinamento(Treinamento treinamento);
     }
 }
