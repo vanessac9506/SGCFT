@@ -9,12 +9,12 @@ namespace SGCFT.Dominio.Entidades
 {
     public class Treinamento
     {
-        public Treinamento()
+        protected Treinamento()
         {
 
         }
 
-        public Treinamento(string tema, int autor, int tipoTreinamento)
+        private Treinamento(string tema, int autor, int tipoTreinamento)
         {
             this.Tema = tema;
             this.IdAutor = autor;

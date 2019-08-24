@@ -25,14 +25,22 @@ namespace SGCFT.Dominio.Servicos
 
             if (treinamento == null)
             {
-                retorno.AdicionarErro("Treinamento não informada");
+                retorno.AdicionarErro("Treinamento não informado");
                 return retorno;
             }
 
             retorno = treinamento.ValidarDominio();
             if (retorno.Sucesso)
-                _treinamentoRepositorio.Inserir(treinamento);
+            {
+                if (treinamento.TipoTreinamento == 2)
+                {
+                    if (treinamento.Senha == null)
+                        retorno.AdicionarErro("Senha obrigatória");
+                }
 
+                if(retorno.Sucesso)
+                    _treinamentoRepositorio.Inserir(treinamento);
+            }
             return retorno;
         }
     }

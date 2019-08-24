@@ -9,12 +9,12 @@ namespace SGCFT.Dominio.Entidades
 {
     public class Modulo
     {
-        public Modulo()
+        protected Modulo()
         {
 
         }
 
-        public Modulo(int idTreinamento, string titulo) 
+        private Modulo(int idTreinamento, string titulo) 
         {
             this.IdTreinamento = idTreinamento;
             this.Titulo = titulo;

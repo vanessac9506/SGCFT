@@ -40,8 +40,6 @@ namespace SGCFT.Dominio.Entidades
                 retorno.AdicionarErro("Url inválida!");
 
             return retorno;
-
-
         }
 
     }

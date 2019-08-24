@@ -9,12 +9,12 @@ namespace SGCFT.Dominio.Entidades
 {
     public class Alternativa
     {
-        public Alternativa()
+        protected Alternativa()
         {
 
         }
 
-        public Alternativa(int idPergunta, string texto, bool certoErrado)
+        private Alternativa(int idPergunta, string texto, bool certoErrado)
         {
             this.IdPergunta = idPergunta;
             this.Texto = texto;

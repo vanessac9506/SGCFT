@@ -9,12 +9,12 @@ namespace SGCFT.Dominio.Entidades
 {
     public class Resposta
     {
-        public Resposta()
+        protected Resposta()
         {
 
         }
 
-        public Resposta(int idUsuario, int idPergunta, string resposta)
+        private Resposta(int idUsuario, int idPergunta, string resposta)
         {
             this.IdUsuario = idUsuario;
             this.IdPergunta = idPergunta;
