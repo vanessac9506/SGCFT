@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SGCFT.Dados.Mapeamentos;
+using SGCFT.Dominio.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -20,11 +22,19 @@ namespace SGCFT.Dados.Contextos
             Configuration.ProxyCreationEnabled = false;
         }
 
+        public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<Treinamento> Treinamento { get; set; }
+        public DbSet<Modulo> Modulo { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //remover a convensão de pluralizar o nome das tabelas 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Add(new ConvensaoSGCFT());
+            modelBuilder.Configurations.Add(new UsuarioMap());
+            modelBuilder.Configurations.Add(new TreinamentoMap());
+            modelBuilder.Configurations.Add(new ModuloMap());
+
         }
 
         public int Salvar()

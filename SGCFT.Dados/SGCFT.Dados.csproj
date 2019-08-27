@@ -52,6 +52,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contextos\Contexto.cs" />
+    <Compile Include="Mapeamentos\ModuloMap.cs" />
+    <Compile Include="Mapeamentos\TreinamentoMap.cs" />
+    <Compile Include="Mapeamentos\UsuarioMap.cs" />
+    <Compile Include="Migrations\201908270304097_CriacaoInicial.cs" />
+    <Compile Include="Migrations\201908270304097_CriacaoInicial.Designer.cs">
+      <DependentUpon>201908270304097_CriacaoInicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908270337281_01_Treinamento_Modulo.cs" />
+    <Compile Include="Migrations\201908270337281_01_Treinamento_Modulo.Designer.cs">
+      <DependentUpon>201908270337281_01_Treinamento_Modulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +72,24 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SGCFT.Dominio\SGCFT.Dominio.csproj">
+      <Project>{F010BA92-E4F7-46FF-86C8-DC7D6D97008A}</Project>
+      <Name>SGCFT.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGCFT.Utilitario\SGCFT.Utilitario.csproj">
+      <Project>{61457085-FA4C-4B1C-9976-C07C74DCCC04}</Project>
+      <Name>SGCFT.Utilitario</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201908270304097_CriacaoInicial.resx">
+      <DependentUpon>201908270304097_CriacaoInicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908270337281_01_Treinamento_Modulo.resx">
+      <DependentUpon>201908270337281_01_Treinamento_Modulo.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

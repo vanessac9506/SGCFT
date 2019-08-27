@@ -14,11 +14,12 @@ namespace SGCFT.Dominio.Entidades
 
         }
 
-        private Modulo(int idTreinamento, string titulo) 
+        public Modulo(int idTreinamento, string titulo) 
         {
             this.IdTreinamento = idTreinamento;
             this.Titulo = titulo;
         }
+
         public int Id { get; set; }
         public int IdTreinamento { get; set; }
         public Treinamento Treinamento { get; set; }

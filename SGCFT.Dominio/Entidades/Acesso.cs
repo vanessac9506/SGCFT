@@ -14,7 +14,7 @@ namespace SGCFT.Dominio.Entidades
 
         }
 
-        private Acesso(int usuario, int modulo, int video, DateTime dataAcesso, string pontoParada, string visualizacao)
+        public Acesso(int usuario, int modulo, int video, DateTime dataAcesso, string pontoParada, string visualizacao)
         { 
             this.IdUsuario = usuario;
             this.IdModulo = modulo;
@@ -25,9 +25,12 @@ namespace SGCFT.Dominio.Entidades
         }
 
         public int Id { get; set; }
-        public int IdUsuario { get; set; } 
+        public int IdUsuario { get; set; }
+        public Usuario Usuario { get; set; }
         public int IdModulo { get; set; }
+        public Modulo Modulo { get; set; }
         public int IdVideo { get; set; }
+        public Video Video { get; set; }
         public DateTime DataAcesso { get; set; }
         public string PontoParada { get; set; }
         public string Visualizacao { get; set; }

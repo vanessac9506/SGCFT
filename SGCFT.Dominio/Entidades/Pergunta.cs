@@ -14,7 +14,7 @@ namespace SGCFT.Dominio.Entidades
 
         }
 
-        private Pergunta(string texto)
+        public Pergunta(string texto)
         {
             this.Texto = texto;        
         }

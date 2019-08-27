@@ -14,7 +14,7 @@ namespace SGCFT.Dominio.Entidades
 
         }
 
-        private Treinamento(string tema, int autor, int tipoTreinamento)
+        public Treinamento(string tema, int autor, EnumTipoTreinamento tipoTreinamento)
         {
             this.Tema = tema;
             this.IdAutor = autor;
@@ -26,7 +26,7 @@ namespace SGCFT.Dominio.Entidades
         public Usuario Autor { get; set; }
         public int IdAutor { get; set; }
         public List<Modulo> Modulos { get; set; }
-        public int TipoTreinamento { get; set; }
+        public EnumTipoTreinamento TipoTreinamento { get; set; }
         public string Senha { get; set; }
 
         public Retorno ValidarDominio()

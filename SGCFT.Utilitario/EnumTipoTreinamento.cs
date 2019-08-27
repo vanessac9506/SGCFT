@@ -8,6 +8,8 @@ namespace SGCFT.Utilitario
 {
     public enum EnumTipoTreinamento
     {
-        Privado, Restrito, Publico
+        Privado = 1,
+        Restrito = 2,
+        Publico = 3
     }
 }

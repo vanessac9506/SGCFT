@@ -32,7 +32,7 @@ namespace SGCFT.Dominio.Servicos
             retorno = treinamento.ValidarDominio();
             if (retorno.Sucesso)
             {
-                if (treinamento.TipoTreinamento == 2)
+                if (treinamento.TipoTreinamento == EnumTipoTreinamento.Privado)
                 {
                     if (treinamento.Senha == null)
                         retorno.AdicionarErro("Senha obrigatória");
