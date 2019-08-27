@@ -14,13 +14,16 @@ namespace SGCFT.Dominio.Entidades
 
         }
 
-        public Pergunta(string texto)
+        public Pergunta(string texto, int idAutor)
         {
-            this.Texto = texto;        
+            this.Texto = texto;
+            this.IdAutor = idAutor;
         }
 
-        private int Id { get; set; }
-        private string Texto { get; set; }
+        public int Id { get; set; }
+        public string Texto { get; set; }
+        public int IdAutor { get; set; }
+        public Usuario Autor { get; set; }
 
         public Retorno ValidarDominio()
         {
@@ -28,6 +31,9 @@ namespace SGCFT.Dominio.Entidades
 
             if (string.IsNullOrEmpty(this.Texto) || string.IsNullOrWhiteSpace(this.Texto))
                 retorno.AdicionarErro("Pergunta inválida!");
+
+            if (this.IdAutor <= 0)
+                retorno.AdicionarErro("Autor da pergunta inválido");
 
             return retorno;
         }

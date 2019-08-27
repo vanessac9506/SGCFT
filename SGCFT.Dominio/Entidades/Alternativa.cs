@@ -14,7 +14,7 @@ namespace SGCFT.Dominio.Entidades
 
         }
 
-        private Alternativa(int idPergunta, string texto, bool certoErrado)
+        public Alternativa(int idPergunta, string texto, bool certoErrado)
         {
             this.IdPergunta = idPergunta;
             this.Texto = texto;

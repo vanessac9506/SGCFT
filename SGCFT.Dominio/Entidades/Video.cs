@@ -21,10 +21,10 @@ namespace SGCFT.Dominio.Entidades
             this.Url = url;
         }
 
-        private int Id { get; set; }
-        private int IdModulo { get; set; }
-        private string Titulo { get; set; }
-        private string Url { get; set; }
+        public int Id { get; set; }
+        public int IdModulo { get; set; }
+        public string Titulo { get; set; }
+        public string Url { get; set; }
 
         public Retorno ValidarDominio()
         {

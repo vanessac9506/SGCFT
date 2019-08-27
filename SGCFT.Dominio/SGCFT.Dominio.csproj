@@ -75,7 +75,9 @@
     <Compile Include="Servicos\UsuarioServico.cs" />
     <Compile Include="Servicos\VideoServico.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SGCFT.Utilitario\SGCFT.Utilitario.csproj">
       <Project>{61457085-FA4C-4B1C-9976-C07C74DCCC04}</Project>

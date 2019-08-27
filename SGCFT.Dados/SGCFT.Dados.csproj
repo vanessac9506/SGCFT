@@ -53,6 +53,8 @@
   <ItemGroup>
     <Compile Include="Contextos\Contexto.cs" />
     <Compile Include="Mapeamentos\ModuloMap.cs" />
+    <Compile Include="Mapeamentos\PerguntaMap.cs" />
+    <Compile Include="Mapeamentos\RespostaMap.cs" />
     <Compile Include="Mapeamentos\TreinamentoMap.cs" />
     <Compile Include="Mapeamentos\UsuarioMap.cs" />
     <Compile Include="Migrations\201908270304097_CriacaoInicial.cs" />
@@ -62,6 +64,14 @@
     <Compile Include="Migrations\201908270337281_01_Treinamento_Modulo.cs" />
     <Compile Include="Migrations\201908270337281_01_Treinamento_Modulo.Designer.cs">
       <DependentUpon>201908270337281_01_Treinamento_Modulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908272309255_02_Pergunta_Resposta.cs" />
+    <Compile Include="Migrations\201908272309255_02_Pergunta_Resposta.Designer.cs">
+      <DependentUpon>201908272309255_02_Pergunta_Resposta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908272311565_03_Pergunta_Resposta.cs" />
+    <Compile Include="Migrations\201908272311565_03_Pergunta_Resposta.Designer.cs">
+      <DependentUpon>201908272311565_03_Pergunta_Resposta.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,6 +99,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908270337281_01_Treinamento_Modulo.resx">
       <DependentUpon>201908270337281_01_Treinamento_Modulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908272309255_02_Pergunta_Resposta.resx">
+      <DependentUpon>201908272309255_02_Pergunta_Resposta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908272311565_03_Pergunta_Resposta.resx">
+      <DependentUpon>201908272311565_03_Pergunta_Resposta.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

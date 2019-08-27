@@ -14,18 +14,21 @@ namespace SGCFT.Dominio.Entidades
 
         }
 
-        private Resposta(int idUsuario, int idPergunta, string resposta)
+        public Resposta(int idUsuario, int idPergunta, int resposta)
         {
             this.IdUsuario = idUsuario;
             this.IdPergunta = idPergunta;
-            this.Solucao = resposta;
+            this.IdAlternativaEscolhida = resposta;
 
         }
 
-        private int Id { get; set; }
-        private int IdUsuario { get; set; }
-        private int IdPergunta { get; set; }
-        private string Solucao { get; set; }
+        public int Id { get; set; }
+        public int IdUsuario { get; set; }
+        public Usuario Usuario { get; set; }
+        public int IdPergunta { get; set; }
+        public Pergunta Pergunta { get; set; }
+        public int IdAlternativaEscolhida { get; set; }
+        public Alternativa Alternativa { get; set; }//alternativa escolhida guarda o ID da alternativa escolhida para saber qual foi a resposta
 
         public Retorno ValidarDominio()
         {
@@ -37,7 +40,7 @@ namespace SGCFT.Dominio.Entidades
             if (this.IdPergunta <= 0)
                 retorno.AdicionarErro("Pergunta inválida!");
 
-            if (string.IsNullOrEmpty(this.Solucao) || string.IsNullOrWhiteSpace(this.Solucao))
+            if (this.IdAlternativaEscolhida <= 0)
                 retorno.AdicionarErro("Resposta inválida!");
 
             return retorno;

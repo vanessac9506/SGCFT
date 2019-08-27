@@ -17,7 +17,7 @@ namespace SGCFT.Dados.Mapeamentos
             this.Property(x => x.Tema).HasColumnType("VARCHAR").HasMaxLength(200);
             this.Property(x => x.TipoTreinamento);
             this.Property(x => x.Senha).HasColumnType("VARCHAR").HasMaxLength(500);
-            this.HasRequired(x => x.Autor).WithMany().HasForeignKey(x => x.IdAutor);
+            this.HasRequired(x => x.Autor).WithMany().HasForeignKey(x => x.IdAutor);          
         }
     }
 }
