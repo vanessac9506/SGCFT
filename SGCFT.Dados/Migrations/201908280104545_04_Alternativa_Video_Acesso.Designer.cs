@@ -7,13 +7,13 @@ namespace SGCFT.Dados.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class _03_Pergunta_Resposta : IMigrationMetadata
+    public sealed partial class _04_Alternativa_Video_Acesso : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(_03_Pergunta_Resposta));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_04_Alternativa_Video_Acesso));
         
         string IMigrationMetadata.Id
         {
-            get { return "201908272311565_03_Pergunta_Resposta"; }
+            get { return "201908280104545_04_Alternativa_Video_Acesso"; }
         }
         
         string IMigrationMetadata.Source

@@ -14,7 +14,7 @@ namespace SGCFT.Dados.Mapeamentos
         {
             this.ToTable("Resposta");
             this.HasKey(x => x.Id);
-            this.HasRequired(x => x.Usuario).WithMany().HasForeignKey(x => x.IdUsuario);
+            this.Property(x => x.IdUsuario);
             this.HasRequired(x => x.Pergunta).WithMany().HasForeignKey(x => x.IdPergunta);
             this.HasRequired(x => x.Alternativa).WithMany().HasForeignKey(x => x.IdAlternativaEscolhida);
         }

@@ -23,6 +23,7 @@ namespace SGCFT.Dominio.Entidades
 
         public int Id { get; set; }
         public int IdPergunta { get; set; }
+        //public Pergunta Pergunta { get; set; }
         public string Texto { get; set; }
         public bool? CertoErrado { get; set; }
 

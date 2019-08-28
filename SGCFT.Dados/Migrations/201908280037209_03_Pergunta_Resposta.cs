@@ -29,21 +29,33 @@ namespace SGCFT.Dados.Migrations
                         IdAlternativaEscolhida = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Alternativa", t => t.IdAlternativaEscolhida, cascadeDelete: true)
                 .ForeignKey("dbo.Pergunta", t => t.IdPergunta, cascadeDelete: true)
-                .ForeignKey("dbo.Usuario", t => t.IdUsuario, cascadeDelete: true)
-                .Index(t => t.IdUsuario)
-                .Index(t => t.IdPergunta);
+                .Index(t => t.IdPergunta)
+                .Index(t => t.IdAlternativaEscolhida);
+            
+            CreateTable(
+                "dbo.Alternativa",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        IdPergunta = c.Int(nullable: false),
+                        Texto = c.String(),
+                        CertoErrado = c.Boolean(),
+                    })
+                .PrimaryKey(t => t.Id);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Resposta", "IdUsuario", "dbo.Usuario");
             DropForeignKey("dbo.Resposta", "IdPergunta", "dbo.Pergunta");
+            DropForeignKey("dbo.Resposta", "IdAlternativaEscolhida", "dbo.Alternativa");
             DropForeignKey("dbo.Pergunta", "IdAutor", "dbo.Usuario");
+            DropIndex("dbo.Resposta", new[] { "IdAlternativaEscolhida" });
             DropIndex("dbo.Resposta", new[] { "IdPergunta" });
-            DropIndex("dbo.Resposta", new[] { "IdUsuario" });
             DropIndex("dbo.Pergunta", new[] { "IdAutor" });
+            DropTable("dbo.Alternativa");
             DropTable("dbo.Resposta");
             DropTable("dbo.Pergunta");
         }

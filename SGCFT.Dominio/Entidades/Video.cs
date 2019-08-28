@@ -23,6 +23,7 @@ namespace SGCFT.Dominio.Entidades
 
         public int Id { get; set; }
         public int IdModulo { get; set; }
+        //public Modulo Modulo { get; set; }
         public string Titulo { get; set; }
         public string Url { get; set; }
 

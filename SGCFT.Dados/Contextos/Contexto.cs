@@ -26,10 +26,10 @@ namespace SGCFT.Dados.Contextos
         public DbSet<Treinamento> Treinamento { get; set; }
         public DbSet<Modulo> Modulo { get; set; }
         public DbSet<Pergunta> Pergunta { get; set; }
-       // public DbSet<Resposta> Resposta { get; set; }
-        //public DbSet<Alternativa> Alternativa { get; set; }
-        //public DbSet<Video> Video { get; set; }
-        //public DbSet<Acesso> Acesso { get; set; }
+        public DbSet<Resposta> Resposta { get; set; }
+        public DbSet<Alternativa> Alternativa { get; set; }
+        public DbSet<Video> Video { get; set; }
+        public DbSet<Acesso> Acesso { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -41,11 +41,10 @@ namespace SGCFT.Dados.Contextos
             modelBuilder.Configurations.Add(new TreinamentoMap());
             modelBuilder.Configurations.Add(new ModuloMap());
             modelBuilder.Configurations.Add(new PerguntaMap());
-            //modelBuilder.Configurations.Add(new RespostaMap());
-
-            //modelBuilder.Configurations.Add(new AlternativaMap());
-            //modelBuilder.Configurations.Add(new VideoMap());
-            //modelBuilder.Configurations.Add(new AcessoMap());
+            modelBuilder.Configurations.Add(new RespostaMap());
+            modelBuilder.Configurations.Add(new AlternativaMap());
+            modelBuilder.Configurations.Add(new VideoMap());
+            modelBuilder.Configurations.Add(new AcessoMap());
         }
 
         public int Salvar()

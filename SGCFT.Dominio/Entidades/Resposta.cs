@@ -24,7 +24,7 @@ namespace SGCFT.Dominio.Entidades
 
         public int Id { get; set; }
         public int IdUsuario { get; set; }
-        public Usuario Usuario { get; set; }
+        //public Usuario Usuario { get; set; }
         public int IdPergunta { get; set; }
         public Pergunta Pergunta { get; set; }
         public int IdAlternativaEscolhida { get; set; }

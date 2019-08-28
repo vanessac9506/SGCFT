@@ -30,6 +30,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -52,11 +53,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contextos\Contexto.cs" />
+    <Compile Include="Mapeamentos\AcessoMap.cs" />
+    <Compile Include="Mapeamentos\AlternativaMap.cs" />
     <Compile Include="Mapeamentos\ModuloMap.cs" />
     <Compile Include="Mapeamentos\PerguntaMap.cs" />
     <Compile Include="Mapeamentos\RespostaMap.cs" />
     <Compile Include="Mapeamentos\TreinamentoMap.cs" />
     <Compile Include="Mapeamentos\UsuarioMap.cs" />
+    <Compile Include="Mapeamentos\VideoMap.cs" />
     <Compile Include="Migrations\201908270304097_CriacaoInicial.cs" />
     <Compile Include="Migrations\201908270304097_CriacaoInicial.Designer.cs">
       <DependentUpon>201908270304097_CriacaoInicial.cs</DependentUpon>
@@ -69,9 +73,13 @@
     <Compile Include="Migrations\201908272309255_02_Pergunta_Resposta.Designer.cs">
       <DependentUpon>201908272309255_02_Pergunta_Resposta.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201908272311565_03_Pergunta_Resposta.cs" />
-    <Compile Include="Migrations\201908272311565_03_Pergunta_Resposta.Designer.cs">
-      <DependentUpon>201908272311565_03_Pergunta_Resposta.cs</DependentUpon>
+    <Compile Include="Migrations\201908280037209_03_Pergunta_Resposta.cs" />
+    <Compile Include="Migrations\201908280037209_03_Pergunta_Resposta.Designer.cs">
+      <DependentUpon>201908280037209_03_Pergunta_Resposta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908280104545_04_Alternativa_Video_Acesso.cs" />
+    <Compile Include="Migrations\201908280104545_04_Alternativa_Video_Acesso.Designer.cs">
+      <DependentUpon>201908280104545_04_Alternativa_Video_Acesso.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,8 +111,11 @@
     <EmbeddedResource Include="Migrations\201908272309255_02_Pergunta_Resposta.resx">
       <DependentUpon>201908272309255_02_Pergunta_Resposta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908272311565_03_Pergunta_Resposta.resx">
-      <DependentUpon>201908272311565_03_Pergunta_Resposta.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908280037209_03_Pergunta_Resposta.resx">
+      <DependentUpon>201908280037209_03_Pergunta_Resposta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908280104545_04_Alternativa_Video_Acesso.resx">
+      <DependentUpon>201908280104545_04_Alternativa_Video_Acesso.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
