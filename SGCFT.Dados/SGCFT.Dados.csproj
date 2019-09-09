@@ -83,10 +83,16 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\AcessoRepositorio.cs" />
+    <Compile Include="Repositorios\AlternativaRepositorio.cs" />
+    <Compile Include="Repositorios\ModuloRepositorio.cs" />
+    <Compile Include="Repositorios\PerguntaRepositorio.cs" />
+    <Compile Include="Repositorios\RespostaRepositorio.cs" />
+    <Compile Include="Repositorios\TreinamentoRepositorio.cs" />
+    <Compile Include="Repositorios\UsuarioRepositorio.cs" />
+    <Compile Include="Repositorios\VideoRepositorio.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repositorios\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
