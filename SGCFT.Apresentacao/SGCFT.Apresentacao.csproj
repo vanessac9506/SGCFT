@@ -153,7 +153,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AcessoController.cs" />
+    <Compile Include="Controllers\AlternativaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ModuloController.cs" />
+    <Compile Include="Controllers\PerguntaController.cs" />
+    <Compile Include="Controllers\RespostaController.cs" />
+    <Compile Include="Controllers\TreinamentoController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -215,6 +223,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SGCFT.Dados\SGCFT.Dados.csproj">
+      <Project>{406D4611-E296-4E28-AF80-7ED3FEC7679F}</Project>
+      <Name>SGCFT.Dados</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGCFT.Dominio\SGCFT.Dominio.csproj">
+      <Project>{F010BA92-E4F7-46FF-86C8-DC7D6D97008A}</Project>
+      <Name>SGCFT.Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
