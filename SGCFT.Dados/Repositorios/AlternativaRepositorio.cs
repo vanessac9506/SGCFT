@@ -18,6 +18,12 @@ namespace SGCFT.Dados.Repositorios
             _contexto = new Contexto();
         }
 
+        public void Alterar(Alternativa alternativa)
+        {
+            _contexto.Entry<Alternativa>(alternativa).State = System.Data.Entity.EntityState.Modified;
+            _contexto.SaveChanges();
+        }
+
         public void Inserir(Alternativa alternativa)
         {
             _contexto.Alternativa.Add(alternativa);
