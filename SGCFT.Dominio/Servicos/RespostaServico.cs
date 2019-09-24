@@ -32,5 +32,19 @@ namespace SGCFT.Dominio.Servicos
                 _respostaRepositorio.Inserir(resposta);
             return retorno;
         }
+        public Retorno AlterarResposta(Resposta resposta)
+        {
+            Retorno retorno = new Retorno();
+            if (resposta == null)
+            {
+                retorno.AdicionarErro("Resposta não informada");
+                return retorno;
+            }
+            retorno = resposta.ValidarDominio();
+            if (retorno.Sucesso)
+                _respostaRepositorio.Alterar(resposta);
+
+            return retorno;
+        }
     }
 }

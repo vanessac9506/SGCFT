@@ -12,5 +12,6 @@ namespace SGCFT.Dominio.Contratos.Repositorios
         bool ValidarEmailCadastrado(string email);
         bool ValidarDocumentoCadastrado(long documento, bool isCpf);
         void Inserir(Usuario usuario);
+        void Alterar(Usuario usuario);
     }
 }

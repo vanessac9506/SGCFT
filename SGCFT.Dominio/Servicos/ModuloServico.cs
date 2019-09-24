@@ -34,5 +34,20 @@ namespace SGCFT.Dominio.Servicos
                        
             return retorno;
         }
+
+        public Retorno AlterarModulo(Modulo modulo)
+        {
+            Retorno retorno = new Retorno();
+            if (modulo == null)
+            {
+                retorno.AdicionarErro("Módulo não informado");
+                return retorno;
+            }
+            retorno = modulo.ValidarDominio();
+            if (retorno.Sucesso)
+                _moduloRepositorio.Alterar(modulo);
+
+            return retorno;
+        }
     }
 }

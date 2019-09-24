@@ -10,5 +10,6 @@ namespace SGCFT.Dominio.Contratos.Repositorios
     public interface IPerguntaRepositorio
     {
         void Inserir(Pergunta pergunta);
+        void Alterar(Pergunta pergunta);
     }
 }

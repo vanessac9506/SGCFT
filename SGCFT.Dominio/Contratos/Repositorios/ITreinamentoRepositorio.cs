@@ -10,5 +10,6 @@ namespace SGCFT.Dominio.Contratos.Repositorios
     public interface ITreinamentoRepositorio
     {
         void Inserir(Treinamento treinamento);
+        void Alterar(Treinamento treinamento);
     }
 }

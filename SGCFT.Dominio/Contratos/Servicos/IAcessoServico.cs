@@ -11,5 +11,6 @@ namespace SGCFT.Dominio.Contratos.Servicos
     public interface IAcessoServico
     {
         Retorno InserirAcesso(Acesso acesso);
+        Retorno AlterarAcesso(Acesso acesso);
     }
 }

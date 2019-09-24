@@ -11,5 +11,6 @@ namespace SGCFT.Dominio.Contratos.Servicos
     public interface IVideoServico
     {
         Retorno InserirVideo(Video video);
+        Retorno AlterarVideo(Video video);
     }
 }

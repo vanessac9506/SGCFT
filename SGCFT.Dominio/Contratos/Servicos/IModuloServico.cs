@@ -11,5 +11,6 @@ namespace SGCFT.Dominio.Contratos.Servicos
     public interface IModuloServico
     {
         Retorno InserirModulo(Modulo modulo);
+        Retorno AlterarModulo(Modulo modulo);
     }
 }

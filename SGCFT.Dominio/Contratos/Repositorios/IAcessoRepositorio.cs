@@ -11,5 +11,6 @@ namespace SGCFT.Dominio.Contratos.Repositorios
     public interface IAcessoRepositorio
     {
         void Inserir(Acesso acesso);
+        void Alterar(Acesso acesso);
     }
 }

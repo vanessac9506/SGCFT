@@ -11,5 +11,6 @@ namespace SGCFT.Dominio.Contratos.Servicos
     public interface IAlternativaServico
     {
         Retorno InserirAlternativa(Alternativa alternativa);
+        Retorno AlterarAlternativa(Alternativa alternativa);
     }
 }

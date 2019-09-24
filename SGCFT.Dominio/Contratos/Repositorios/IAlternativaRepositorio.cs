@@ -10,5 +10,6 @@ namespace SGCFT.Dominio.Contratos.Repositorios
     public interface IAlternativaRepositorio
     {
         void Inserir(Alternativa alternativa);
+        void Alterar(Alternativa alternativa);
     }
 }

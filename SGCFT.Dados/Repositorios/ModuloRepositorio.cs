@@ -18,6 +18,12 @@ namespace SGCFT.Dados.Repositorios
             _contexto = new Contexto();
         }
 
+        public void Alterar(Modulo modulo)
+        {
+            _contexto.Entry<Modulo>(modulo).State = System.Data.Entity.EntityState.Modified;
+            _contexto.SaveChanges();
+        }
+
         public void Inserir(Modulo modulo)
         {
             _contexto.Modulo.Add(modulo);

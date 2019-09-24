@@ -43,5 +43,20 @@ namespace SGCFT.Dominio.Servicos
             }
             return retorno;
         }
+
+        public Retorno AlterarTreinamento(Treinamento treinamento)
+        {
+            Retorno retorno = new Retorno();
+            if (treinamento == null)
+            {
+                retorno.AdicionarErro("Treinamento não informado");
+                return retorno;
+            }
+            retorno = treinamento.ValidarDominio();
+            if (retorno.Sucesso)
+                _treinamentoRepositorio.Alterar(treinamento);
+
+            return retorno;
+        }
     }
 }

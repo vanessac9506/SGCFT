@@ -11,5 +11,6 @@ namespace SGCFT.Dominio.Contratos.Servicos
     public interface ITreinamentoServico
     {
         Retorno InserirTreinamento(Treinamento treinamento);
+        Retorno AlterarTreinamento(Treinamento treinamento);
     }
 }

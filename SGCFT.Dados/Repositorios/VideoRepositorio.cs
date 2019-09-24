@@ -18,6 +18,12 @@ namespace SGCFT.Dados.Repositorios
             _contexto = new Contexto();
         }
 
+        public void Alterar(Video video)
+        {
+            _contexto.Entry<Video>(video).State = System.Data.Entity.EntityState.Modified;
+            _contexto.SaveChanges();
+        }
+
         public void Inserir(Video video)
         {
             _contexto.Video.Add(video);

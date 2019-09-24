@@ -11,5 +11,6 @@ namespace SGCFT.Dominio.Contratos.Servicos
     public interface IUsuarioServico
     {
         Retorno InserirUsuario(Usuario usuario);
+        Retorno AlterarUsuario(Usuario usuario);
     }
 }

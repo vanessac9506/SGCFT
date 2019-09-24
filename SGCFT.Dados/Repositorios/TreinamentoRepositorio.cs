@@ -19,14 +19,17 @@ namespace SGCFT.Dados.Repositorios
             _contexto = new Contexto();
         }
 
+        public void Alterar(Treinamento treinamento)
+        {
+            _contexto.Entry<Treinamento>(treinamento).State = System.Data.Entity.EntityState.Modified;
+            _contexto.SaveChanges();
+        }
+
         public void Inserir(Treinamento treinamento)
         {
             _contexto.Treinamento.Add(treinamento);
             _contexto.SaveChanges();
         }
-
-
-
 
         public void Dispose()
         {

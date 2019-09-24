@@ -35,6 +35,19 @@ namespace SGCFT.Dominio.Servicos
             return retorno;
         }
 
+        public Retorno AlterarAcesso(Acesso acesso)
+        {
+            Retorno retorno = new Retorno();
+            if (acesso == null)
+            {
+                retorno.AdicionarErro("Acesso não informado");
+                return retorno;
+            }
+            retorno = acesso.ValidarDominio();
+            if (retorno.Sucesso)
+                _acessoRepositorio.Alterar(acesso);
 
+            return retorno;
+        }
     }
 }

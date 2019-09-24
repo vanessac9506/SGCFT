@@ -33,5 +33,20 @@ namespace SGCFT.Dominio.Servicos
                 _alternativaRepositorio.Inserir(alternativa);
             return retorno;
         }
+
+        public Retorno AlterarAlternativa(Alternativa alternativa)
+        {
+            Retorno retorno = new Retorno();
+            if (alternativa == null)
+            {
+                retorno.AdicionarErro("Alternativa não informada");
+                return retorno;
+            }
+            retorno = alternativa.ValidarDominio();
+            if (retorno.Sucesso)
+                _alternativaRepositorio.Alterar(alternativa);
+
+            return retorno;
+        }
     }
 }

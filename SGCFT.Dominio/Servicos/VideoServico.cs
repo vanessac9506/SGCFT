@@ -34,5 +34,20 @@ namespace SGCFT.Dominio.Servicos
 
             return retorno;
         }
+
+        public Retorno AlterarVideo(Video video)
+        {
+            Retorno retorno = new Retorno();
+            if (video == null)
+            {
+                retorno.AdicionarErro("Vídeo não informado");
+                return retorno;
+            }
+            retorno = video.ValidarDominio();
+            if (retorno.Sucesso)
+                _videoRepositorio.Alterar(video);
+
+            return retorno;
+        }
     }
 }

@@ -11,5 +11,6 @@ namespace SGCFT.Dominio.Contratos.Servicos
     interface IRespostaServico
     {
         Retorno InserirResposta(Resposta resposta);
+        Retorno AlterarResposta(Resposta resposta);
     }
 }

@@ -18,6 +18,12 @@ namespace SGCFT.Dados.Repositorios
             _contexto = new Contexto();
         }
 
+        public void Alterar(Pergunta pergunta)
+        {
+            _contexto.Entry<Pergunta>(pergunta).State = System.Data.Entity.EntityState.Modified;
+            _contexto.SaveChanges();
+        }
+
         public void Inserir(Pergunta pergunta)
         {
             _contexto.Pergunta.Add(pergunta);

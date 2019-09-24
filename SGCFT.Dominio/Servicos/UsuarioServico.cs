@@ -48,5 +48,20 @@ namespace SGCFT.Dominio.Servicos
 
             return retorno;
         }
+
+        public Retorno AlterarUsuario(Usuario usuario)
+        {
+            Retorno retorno = new Retorno();
+            if (usuario == null)
+            {
+                retorno.AdicionarErro("Usuário não informado");
+                return retorno;
+            }
+            retorno = usuario.ValidarDominio();
+            if (retorno.Sucesso)
+                _usuarioRepositorio.Alterar(usuario);
+
+            return retorno;
+        }
     }
 }

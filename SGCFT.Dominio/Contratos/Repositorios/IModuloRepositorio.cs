@@ -10,5 +10,6 @@ namespace SGCFT.Dominio.Contratos.Repositorios
     public interface IModuloRepositorio
     {
         void Inserir(Modulo modulo);
+        void Alterar(Modulo modulo);
     }
 }

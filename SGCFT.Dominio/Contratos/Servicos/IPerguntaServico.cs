@@ -11,5 +11,6 @@ namespace SGCFT.Dominio.Contratos.Servicos
     public interface IPerguntaServico
     {
         Retorno InserirPergunta(Pergunta pergunta);
+        Retorno AlterarPergunta(Pergunta pergunta);
     }
 }

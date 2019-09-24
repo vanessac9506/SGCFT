@@ -11,5 +11,6 @@ namespace SGCFT.Dominio.Contratos.Repositorios
     public interface IVideoRepositorio
     {
         void Inserir(Video video);
+        void Alterar(Video video);
     }
 }
