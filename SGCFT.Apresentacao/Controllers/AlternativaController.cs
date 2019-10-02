@@ -1,33 +1,26 @@
 ﻿using SGCFT.Dados.Repositorios;
+using SGCFT.Dominio.Contratos.Servicos;
 using SGCFT.Dominio.Entidades;
+using SGCFT.Dominio.Servicos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace SGCFT.Apresentacao.Controllers
 {
-    public class AlternativaController
+    public class AlternativaController: Controller
     {
-        private AlternativaRepositorio _repositorioAlternativas;
+        private readonly IAlternativaServico _servicoAlternativas;
         public AlternativaController()
         {
-            _repositorioAlternativas = new AlternativaRepositorio();
+            _servicoAlternativas = new AlternativaServico(new AlternativaRepositorio());
         }
 
-        public bool CadastrarAlternativa(Alternativa alternativa)
+        public ActionResult Index()
         {
-
-            try //try e dois tabs já montam a estrutura do trycatch
-            {
-                _repositorioAlternativas.Inserir(alternativa);
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            return View();
         }
     }
 }

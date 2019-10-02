@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SGCFT.Dominio.Contratos.Servicos
 {
-    interface IRespostaServico
+    public interface IRespostaServico
     {
         Retorno InserirResposta(Resposta resposta);
         Retorno AlterarResposta(Resposta resposta);

@@ -1,33 +1,28 @@
 ﻿using SGCFT.Dados.Repositorios;
+using SGCFT.Dominio.Contratos.Servicos;
 using SGCFT.Dominio.Entidades;
+using SGCFT.Dominio.Servicos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace SGCFT.Apresentacao.Controllers
 {
-    public class RespostaController
+    public class RespostaController: Controller
     {
-        private RespostaRepositorio _repositorioRespostas;
+        private readonly IRespostaServico _servicoRespostas;
+
         public RespostaController()
         {
-            _repositorioRespostas = new RespostaRepositorio();
+            _servicoRespostas = new RespostaServico(new RespostaRepositorio());
         }
 
-        public bool CadastrarResposta(Resposta resposta)
+        public ActionResult Index()
         {
-
-            try //try e dois tabs já montam a estrutura do trycatch
-            {
-                _repositorioRespostas.Inserir(resposta);
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            return View();
         }
+
     }
 }
