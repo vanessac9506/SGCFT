@@ -1,33 +1,29 @@
 ﻿using SGCFT.Dados.Repositorios;
+using SGCFT.Dominio.Contratos.Servicos;
 using SGCFT.Dominio.Entidades;
+using SGCFT.Dominio.Servicos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace SGCFT.Apresentacao.Controllers
 {
-    public class TreinamentoController
+    public class TreinamentoController: Controller
     {
-        private TreinamentoRepositorio _repositorioTreinamentos;
+        private readonly ITreinamentoServico _servicoTreinamentos;
+
         public TreinamentoController()
         {
-            _repositorioTreinamentos = new TreinamentoRepositorio();
+            _servicoTreinamentos = new TreinamentoServico(new TreinamentoRepositorio());
         }
 
-        public bool CadastrarTreinamento(Treinamento treinamento)
+        public ActionResult Index()
         {
-
-            try //try e dois tabs já montam a estrutura do trycatch
-            {
-                _repositorioTreinamentos.Inserir(treinamento);
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            return View();
         }
+
+
     }
 }

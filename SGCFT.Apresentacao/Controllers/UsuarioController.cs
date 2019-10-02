@@ -1,33 +1,44 @@
-﻿using SGCFT.Dados.Repositorios;
+﻿using SGCFT.Apresentacao.Models;
+using SGCFT.Dados.Repositorios;
+using SGCFT.Dominio.Contratos.Servicos;
 using SGCFT.Dominio.Entidades;
+using SGCFT.Dominio.Servicos;
+using SGCFT.Utilitario;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace SGCFT.Apresentacao.Controllers
 {
-    public class UsuarioController
+    public class UsuarioController: Controller
     {
-        private UsuarioRepositorio _repositorioUsuarios;
+        private readonly IUsuarioServico _servicoUsuarios;
+
+
         public UsuarioController()
         {
-            _repositorioUsuarios = new UsuarioRepositorio();          
+            _servicoUsuarios = new UsuarioServico(new UsuarioRepositorio());          
         }
 
-        public bool CadastrarUsuario(Usuario usuario)
+        public ActionResult Index()
+        {   
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index(UsuarioViewModel usuarioViewModel)
         {
-
-            try //try e dois tabs já montam a estrutura do trycatch
+           if(ModelState.IsValid)
             {
-                _repositorioUsuarios.Inserir(usuario);
-
-                return true;
+                Usuario usuario = usuarioViewModel.ConverterParaDominio();
+                Retorno retorno = _servicoUsuarios.InserirUsuario(usuario);
+                ViewBag.Sucesso = retorno.Sucesso;
+                ViewBag.Mensagens = retorno.Mensagens;
             }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            return View();
         }
+
     }
 }
