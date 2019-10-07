@@ -1,6 +1,8 @@
 ﻿@model SGCFT.Apresentacao.Models.PerguntaViewModel
 @{
-    ViewBag.Title = "Index";
+                /**/
+
+                ViewBag.Title = "Index";
 }
 
 <h2>Cadastro de Perguntas</h2>
@@ -25,6 +27,22 @@
 
 @using (Html.BeginForm("Index", "Pergunta", FormMethod.Post, new { id = "formPergunta", @class = "form-group" }))
 {
-
+    <div class="row">
+        <div class="form-group">
+            <label class="control-label col-md-2">IdAutor: </label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.IdAutor, new { id = "txtIdAutor", @class = "form-control", autocomplete = "off" })
+                <label class="warning">@Html.ValidationMessageFor(x => x.IdAutor)</label>
+            </div>
+            <label class="control-label col-md-2">Texto: </label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.Texto, new { id = "txtTexto", @class = "form-control", autocomplete = "off" })
+                <label class="warning">@Html.ValidationMessageFor(x => x.Texto)</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <button type="submit" class="btn btn-success">Salvar</button>
+    </div>
 
 }
