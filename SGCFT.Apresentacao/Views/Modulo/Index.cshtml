@@ -1,0 +1,56 @@
+﻿@model SGCFT.Apresentacao.Models.ModuloViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Cadastro de módulos</h2>
+
+@if (ViewBag.Sucesso != null)
+{
+    if ((bool)ViewBag.Sucesso)
+    {
+        <div class="alert alert-success" role="alert">Módulo cadastrado com sucesso</div>
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">
+            @foreach (string mensagem in ViewBag.Mensagens as List<string>)
+            {
+                @mensagem
+                <br />
+            }
+        </div>
+    }
+}
+
+@using (Html.BeginForm("Index", "Modulo", FormMethod.Post, new { id = "formModulo", @class = "form-group" }))
+{
+    <div class="row">
+        <div class="form-group">
+            <label class="control-label col-md-2">Id Treinamento: </label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.IdTreinamento, new { id = "txtIdTreinamento", @class = "form-control", autocomplete = "off" })
+                <label class="warning">@Html.ValidationMessageFor(x => x.IdTreinamento)</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Título: </label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.Titulo, new { id = "txtTitulo", @class = "form-control", autocomplete = "off" })
+                <label class="warning">@Html.ValidationMessageFor(x => x.Titulo)</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <button type="submit" class="btn btn-success">Salvar</button>
+    </div>
+
+
+
+
+
+
+
+}
+

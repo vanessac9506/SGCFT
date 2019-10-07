@@ -89,6 +89,12 @@ namespace SGCFT.Dominio.Teste
             //FALTA FAZER*********  
         }
 
+        public void Alterar(Usuario usuario)
+        {
+            //FALTA FAZER*********  
+        }
+
+
         public bool ValidarDocumentoCadastrado(long documento, bool isCpf)
         {
             return this.resultadoEsperadoDocumentoCadastrado;
@@ -98,5 +104,6 @@ namespace SGCFT.Dominio.Teste
         {
             return this.resultadoEsperadoEmailCadastrado;
         }
+
     }
 }

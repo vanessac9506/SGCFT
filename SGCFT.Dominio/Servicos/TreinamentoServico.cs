@@ -32,6 +32,10 @@ namespace SGCFT.Dominio.Servicos
             retorno = treinamento.ValidarDominio();
             if (retorno.Sucesso)
             {
+                if (treinamento.IdAutor == 0)
+                {
+                    retorno.AdicionarErro("Autor inválido");
+                }
                 if (treinamento.TipoTreinamento == EnumTipoTreinamento.Privado)
                 {
                     if (treinamento.Senha == null)

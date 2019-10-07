@@ -14,11 +14,12 @@ namespace SGCFT.Dominio.Entidades
 
         }
 
-        public Treinamento(string tema, int autor, EnumTipoTreinamento tipoTreinamento)
+        public Treinamento(string tema, int autor, EnumTipoTreinamento tipoTreinamento, string senha)
         {
             this.Tema = tema;
             this.IdAutor = autor;
             this.TipoTreinamento = tipoTreinamento;
+            this.Senha = senha;
         }
 
         public int Id { get; set; }

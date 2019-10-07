@@ -1,0 +1,30 @@
+﻿@model SGCFT.Apresentacao.Models.PerguntaViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Cadastro de Perguntas</h2>
+
+@if (ViewBag.Sucesso != null)
+{
+    if ((bool)ViewBag.Sucesso)
+    {
+        <div class="alert alert-success" role="alert">Pergunta cadastrada com sucesso</div>
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">
+            @foreach (string mensagem in ViewBag.Mensagens as List<string>)
+            {
+                @mensagem
+                <br />
+            }
+        </div>
+    }
+}
+
+@using (Html.BeginForm("Index", "Pergunta", FormMethod.Post, new { id = "formPergunta", @class = "form-group" }))
+{
+
+
+}
