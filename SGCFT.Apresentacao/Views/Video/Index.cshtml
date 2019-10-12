@@ -1,0 +1,53 @@
+﻿@model SGCFT.Apresentacao.Models.VideoViewModel
+@{
+    ViewBag.Title = "Index";
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<h2>Cadastro de Video</h2>
+
+@if (ViewBag.Sucesso != null)
+{
+    if ((bool)ViewBag.Sucesso)
+    {
+        <div class="alert alert-success" role="alert">Video cadastrado com sucesso</div>
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">
+            @foreach (string mensagem in ViewBag.Mensagens as List<string>)
+            {
+                @mensagem
+                <br />
+            }
+        </div>
+    }
+}
+
+
+@using (Html.BeginForm("Index", "Video", FormMethod.Post, new { id = "formVideo", @class = "form-group" }))
+{
+    <div class="row">
+        <div class="form-group">qweqvvdbg
+            <label class="control-label col-md-2">IdModulo: </label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.IdModulo, new { id = "txtIdModulo", @class = "form-control", autocomplete = "off" })
+                <label class="warning">@Html.ValidationMessageFor(x => x.IdModulo)</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Título: </label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.Titulo, new { id = "txtTitulo", @class = "form-control", autocomplete = "off" })
+                <label class="warning">@Html.ValidationMessageFor(x => x.Titulo)</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <button type="submit" class="btn btn-success">Salvar</button>
+    </div>
+}

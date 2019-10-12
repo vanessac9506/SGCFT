@@ -17,6 +17,8 @@ namespace SGCFT.Dados.Mapeamentos
             this.Property(x => x.Titulo).HasColumnType("VARCHAR").HasMaxLength(200);
             this.Property(x => x.Url).HasColumnType("VARCHAR").HasMaxLength(500);
             this.Property(x => x.IdModulo);
+            this.HasRequired(x => x.Modulo).WithMany(x => x.Videos).HasForeignKey(x => x.IdModulo);
+            this.HasRequired(x => x.VideoConteudo).WithRequiredPrincipal().WillCascadeOnDelete();
         }
     }
 }

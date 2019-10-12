@@ -170,6 +170,7 @@
     <Compile Include="Models\PerguntaViewModel.cs" />
     <Compile Include="Models\TreinamentoViewModel.cs" />
     <Compile Include="Models\UsuarioViewModel.cs" />
+    <Compile Include="Models\VideoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -216,6 +217,7 @@
     <Content Include="Views\Modulo\Index.cshtml" />
     <Content Include="Views\Pergunta\Index.cshtml" />
     <Content Include="Views\Alternativa\Index.cshtml" />
+    <Content Include="Views\Video\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

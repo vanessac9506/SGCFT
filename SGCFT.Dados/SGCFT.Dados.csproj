@@ -60,6 +60,7 @@
     <Compile Include="Mapeamentos\RespostaMap.cs" />
     <Compile Include="Mapeamentos\TreinamentoMap.cs" />
     <Compile Include="Mapeamentos\UsuarioMap.cs" />
+    <Compile Include="Mapeamentos\VideoConteudoMap.cs" />
     <Compile Include="Mapeamentos\VideoMap.cs" />
     <Compile Include="Migrations\201908270304097_CriacaoInicial.cs" />
     <Compile Include="Migrations\201908270304097_CriacaoInicial.Designer.cs">
@@ -80,6 +81,14 @@
     <Compile Include="Migrations\201908280104545_04_Alternativa_Video_Acesso.cs" />
     <Compile Include="Migrations\201908280104545_04_Alternativa_Video_Acesso.Designer.cs">
       <DependentUpon>201908280104545_04_Alternativa_Video_Acesso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910121344437_05_Ajuste_Entidades.cs" />
+    <Compile Include="Migrations\201910121344437_05_Ajuste_Entidades.Designer.cs">
+      <DependentUpon>201910121344437_05_Ajuste_Entidades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910121407176_06_Criacao_VideoConteudo.cs" />
+    <Compile Include="Migrations\201910121407176_06_Criacao_VideoConteudo.Designer.cs">
+      <DependentUpon>201910121407176_06_Criacao_VideoConteudo.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -122,6 +131,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908280104545_04_Alternativa_Video_Acesso.resx">
       <DependentUpon>201908280104545_04_Alternativa_Video_Acesso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910121344437_05_Ajuste_Entidades.resx">
+      <DependentUpon>201910121344437_05_Ajuste_Entidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910121407176_06_Criacao_VideoConteudo.resx">
+      <DependentUpon>201910121407176_06_Criacao_VideoConteudo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -24,6 +24,7 @@ namespace SGCFT.Dominio.Entidades
         public string Texto { get; set; }
         public int IdAutor { get; set; }
         public Usuario Autor { get; set; }
+        public List<Alternativa> Alternativas { get; set; }
 
         public Retorno ValidarDominio()
         {

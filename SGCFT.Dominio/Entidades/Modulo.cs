@@ -24,6 +24,7 @@ namespace SGCFT.Dominio.Entidades
         public int IdTreinamento { get; set; }
         public Treinamento Treinamento { get; set; }
         public string Titulo { get; set; }
+        public List<Video> Videos { get; set; }
 
         public Retorno ValidarDominio()
         {

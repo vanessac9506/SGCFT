@@ -17,7 +17,7 @@ namespace SGCFT.Dados.Mapeamentos
             this.Property(x => x.Texto).HasColumnType("VARCHAR").HasMaxLength(500);
             this.Property(x => x.IdPergunta);
             this.Property(x => x.CertoErrado);
-    }
+        }
 
     }
 }

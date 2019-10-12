@@ -16,6 +16,7 @@ namespace SGCFT.Dados.Mapeamentos
             this.HasKey(x => x.Id);
             this.Property(x => x.Texto).HasColumnType("VARCHAR").HasMaxLength(500);
             this.HasRequired(x => x.Autor).WithMany().HasForeignKey(x => x.IdAutor);
+            this.HasMany(x => x.Alternativas).WithRequired(x => x.Pergunta).HasForeignKey(x => x.IdPergunta);
         }
     }
 }

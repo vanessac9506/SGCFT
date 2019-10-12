@@ -14,18 +14,20 @@ namespace SGCFT.Dominio.Entidades
 
         }
 
-        public Video(int idModulo, string titulo, string url)
+        public Video(int idModulo, string titulo, string url, byte[] conteudo)
         {
             this.IdModulo = idModulo;
             this.Titulo = titulo;
             this.Url = url;
+            this.VideoConteudo = new VideoConteudo(conteudo);
         }
 
         public int Id { get; set; }
         public int IdModulo { get; set; }
-        //public Modulo Modulo { get; set; }
+        public Modulo Modulo { get; set; }
         public string Titulo { get; set; }
         public string Url { get; set; }
+        public VideoConteudo VideoConteudo { get; set; }
 
         public Retorno ValidarDominio()
         {
