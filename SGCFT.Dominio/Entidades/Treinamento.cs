@@ -48,5 +48,7 @@ namespace SGCFT.Dominio.Entidades
                 retorno.AdicionarErro("Senha inválido!");
             return retorno;
         }
+
+
     }
 }

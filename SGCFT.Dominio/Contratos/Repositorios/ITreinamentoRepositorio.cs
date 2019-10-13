@@ -11,5 +11,6 @@ namespace SGCFT.Dominio.Contratos.Repositorios
     {
         void Inserir(Treinamento treinamento);
         void Alterar(Treinamento treinamento);
+        List<Treinamento> selecionarTreinamentosPorUsuario(int idAutor);
     }
 }

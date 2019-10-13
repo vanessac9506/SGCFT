@@ -1,5 +1,6 @@
 ﻿using SGCFT.Apresentacao.Models;
 using SGCFT.Dados.Repositorios;
+using SGCFT.Dominio.Contratos.Repositorios;
 using SGCFT.Dominio.Contratos.Servicos;
 using SGCFT.Dominio.Entidades;
 using SGCFT.Dominio.Servicos;
@@ -15,15 +16,20 @@ namespace SGCFT.Apresentacao.Controllers
     public class ModuloController: Controller
     {
         private readonly IModuloServico _servicoModulos;
+        private readonly ITreinamentoRepositorio _treinamentoRepositorio; 
 
         public ModuloController()
         {
             _servicoModulos = new ModuloServico(new ModuloRepositorio());
+            _treinamentoRepositorio = new TreinamentoRepositorio();
         }
 
         public ActionResult Index()
         {
-            return View();
+            ModuloViewModel moduloViewModel = new ModuloViewModel();
+            var treinamentos = _treinamentoRepositorio.selecionarTreinamentosPorUsuario(1);
+            moduloViewModel.ListaTreinamentos = treinamentos.Select(x => new TreinamentoViewModel(x)).ToList();
+            return View(moduloViewModel);
         }
 
         [HttpPost]

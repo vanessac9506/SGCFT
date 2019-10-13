@@ -30,6 +30,12 @@ namespace SGCFT.Dados.Repositorios
             _contexto.Treinamento.Add(treinamento);
             _contexto.SaveChanges();
         }
+        public List<Treinamento> selecionarTreinamentosPorUsuario(int idAutor)
+        {
+            var query = _contexto.Treinamento.Where(x => x.IdAutor == idAutor);
+            return query.ToList();
+        }
+
 
         public void Dispose()
         {

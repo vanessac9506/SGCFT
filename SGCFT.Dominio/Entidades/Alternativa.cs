@@ -25,7 +25,7 @@ namespace SGCFT.Dominio.Entidades
         public int IdPergunta { get; set; }
         public Pergunta Pergunta { get; set; }
         public string Texto { get; set; }
-        public bool? CertoErrado { get; set; }
+        public bool CertoErrado { get; set; }
 
         public Retorno ValidarDominio()
         {

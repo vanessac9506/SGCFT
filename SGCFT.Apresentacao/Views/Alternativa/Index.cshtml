@@ -26,7 +26,7 @@
     }
 }
 
-@using (Html.BeginForm("Index", "Usuario", FormMethod.Post, new { id = "formUsuario", @class = "form-group" }))
+@using (Html.BeginForm("Index", "Alternativa", FormMethod.Post, new { id = "formAlternativa", @class = "form-group" }))
 {
         <div class="row">
             <div class="form-group">
@@ -45,9 +45,8 @@
             </div>
             <div class="form-group">
                 <label class="control-label col-md-2">Certo ou errado: </label>
-                <div class="col-md-10">
-                    @Html.TextBoxFor(x => x.CertoErrado, new { id = "txtCertoErrado", @class = "form-control", autocomplete = "off" })
-                    <label class="warning">@Html.ValidationMessageFor(x => x.CertoErrado)</label>
+                <div class="col-md-2">
+                    @Html.CheckBoxFor(x => x.CertoErrado, new { id = "txtCertoErrado"})
                 </div>
             </div>
         </div>

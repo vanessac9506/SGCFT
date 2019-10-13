@@ -29,7 +29,7 @@
         <div class="form-group">
             <label class="control-label col-md-2">Id Treinamento: </label>
             <div class="col-md-10">
-                @Html.TextBoxFor(x => x.IdTreinamento, new { id = "txtIdTreinamento", @class = "form-control", autocomplete = "off" })
+                @Html.DropDownListFor(x=>x.IdTreinamento,new SelectList(Model.ListaTreinamentos,"Id","Tema"),new { id = "ddlTreinamentos", @class = "form-control" })
                 <label class="warning">@Html.ValidationMessageFor(x => x.IdTreinamento)</label>
             </div>
         </div>

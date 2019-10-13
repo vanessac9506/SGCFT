@@ -11,14 +11,16 @@ namespace SGCFT.Apresentacao.Models
     {
         public int Id { get; set; }
         public int IdTreinamento { get; set; }
-        public Treinamento Treinamento { get; set; }//preciso deixar aqui?
         [Required(ErrorMessage = "Informe o título")]
         public string Titulo { get; set; }
+        public List<TreinamentoViewModel> ListaTreinamentos { get; set; }
 
         public Modulo ConverterParaDominio()
         {
             Modulo modulo = new Modulo(this.IdTreinamento, this.Titulo);
             return modulo;
         }
+
+
     }
 }

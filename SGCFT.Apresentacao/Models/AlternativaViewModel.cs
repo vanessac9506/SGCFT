@@ -14,7 +14,6 @@ namespace SGCFT.Apresentacao.Models
         public Pergunta Pergunta { get; set; }
         [Required(ErrorMessage = "Informe o texto")]
         public string Texto { get; set; }
-        [Required(ErrorMessage = "Informe se a alternativa está certa/errada")]
         public bool CertoErrado { get; set; }
 
         public Alternativa ConverterParaDominio()

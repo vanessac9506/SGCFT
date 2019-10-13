@@ -10,10 +10,23 @@ namespace SGCFT.Apresentacao.Models
 {
     public class TreinamentoViewModel
     {
+        public TreinamentoViewModel()
+        {
+
+        }
+
+        public TreinamentoViewModel(Treinamento treinamento)
+        {
+            Id = treinamento.Id;
+            Tema = treinamento.Tema;
+            IdAutor = treinamento.IdAutor;
+            TipoTreinamento = treinamento.TipoTreinamento;
+            Senha = treinamento.Senha;
+        }
+
         public int Id { get; set; }
         [Required(ErrorMessage = "Informe o tema")]
         public string Tema { get; set; }
-        public Usuario Autor { get; set; } //preciso manter aqui??
         public int IdAutor { get; set; }
         [Required(ErrorMessage = "Informe o tipo do treinamento")]
         [Range(1, int.MaxValue, ErrorMessage = "Selecione um tipo correto")]
@@ -25,5 +38,7 @@ namespace SGCFT.Apresentacao.Models
             Treinamento treinamento = new Treinamento(this.Tema, this.IdAutor, this.TipoTreinamento, this.Senha);
             return treinamento;
         }
+
+
     }
 }

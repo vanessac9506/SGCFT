@@ -28,24 +28,31 @@
 }
 
 
-@using (Html.BeginForm("Index", "Video", FormMethod.Post, new { id = "formVideo", @class = "form-group" }))
+@using (Html.BeginForm("Index", "Video", FormMethod.Post, new { id = "formVideo", @class = "form-group", enctype = "multipart/form-data" }))
 {
-    <div class="row">
-        <div class="form-group">qweqvvdbg
-            <label class="control-label col-md-2">IdModulo: </label>
-            <div class="col-md-10">
-                @Html.TextBoxFor(x => x.IdModulo, new { id = "txtIdModulo", @class = "form-control", autocomplete = "off" })
-                <label class="warning">@Html.ValidationMessageFor(x => x.IdModulo)</label>
+        <div class="row">
+            <div class="form-group">
+                <label class="control-label col-md-2">IdModulo: </label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(x => x.IdModulo, new { id = "txtIdModulo", @class = "form-control", autocomplete = "off" })
+                    <label class="warning">@Html.ValidationMessageFor(x => x.IdModulo)</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Título: </label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(x => x.Titulo, new { id = "txtTitulo", @class = "form-control", autocomplete = "off" })
+                    <label class="warning">@Html.ValidationMessageFor(x => x.Titulo)</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Vídeo: </label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(x => x.ConteudoVideo, new { id = "txtConteudoVideo", @class = "form-control", autocomplete = "off", type="file" })
+                    <label class="warning">@Html.ValidationMessageFor(x => x.ConteudoVideo)</label>
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <label class="control-label col-md-2">Título: </label>
-            <div class="col-md-10">
-                @Html.TextBoxFor(x => x.Titulo, new { id = "txtTitulo", @class = "form-control", autocomplete = "off" })
-                <label class="warning">@Html.ValidationMessageFor(x => x.Titulo)</label>
-            </div>
-        </div>
-    </div>
 
     <div class="row">
         <button type="submit" class="btn btn-success">Salvar</button>
