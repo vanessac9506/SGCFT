@@ -1,6 +1,9 @@
-﻿using SGCFT.Dominio.Contratos.Repositorios;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using SGCFT.Dominio.Contratos.Repositorios;
 using SGCFT.Dominio.Contratos.Servicos;
 using SGCFT.Dominio.Entidades;
+using SGCFT.Seguranca.Contexto;
 using SGCFT.Utilitario;
 using System;
 using System.Collections.Generic;
@@ -13,9 +16,11 @@ namespace SGCFT.Dominio.Servicos
     public class UsuarioServico : IUsuarioServico
     {
         private IUsuarioRepositorio _usuarioRepositorio;
+        private readonly UserManager<IdentityUser> _userManager;
         public UsuarioServico(IUsuarioRepositorio usuarioRepositorio)
         {
             this._usuarioRepositorio = usuarioRepositorio;
+            this._userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new AspNetContext()));
         }
 
         public Retorno InserirUsuario(Usuario usuario)
@@ -43,7 +48,14 @@ namespace SGCFT.Dominio.Servicos
                     retorno.AdicionarErro($"{(usuario.Cpf != null ? "Cpf" : "Cnpj") } já cadastrado");
 
                 if (retorno.Sucesso)
+                {
                     _usuarioRepositorio.Inserir(usuario);
+                    IdentityUser identityUser = new IdentityUser();
+                    identityUser.Email = usuario.Email;
+                    identityUser.EmailConfirmed = true;
+                    identityUser.UserName = usuario.Cpf != null ? usuario.Cpf.Value.ToString() : usuario.Cnpj.Value.ToString();
+                    _userManager.Create(identityUser, usuario.Senha);
+                }
             }
 
             return retorno;

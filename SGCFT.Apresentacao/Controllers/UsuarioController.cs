@@ -1,8 +1,11 @@
-﻿using SGCFT.Apresentacao.Models;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using SGCFT.Apresentacao.Models;
 using SGCFT.Dados.Repositorios;
 using SGCFT.Dominio.Contratos.Servicos;
 using SGCFT.Dominio.Entidades;
 using SGCFT.Dominio.Servicos;
+using SGCFT.Seguranca.Contexto;
 using SGCFT.Utilitario;
 using System;
 using System.Collections.Generic;
@@ -15,11 +18,12 @@ namespace SGCFT.Apresentacao.Controllers
     public class UsuarioController: Controller
     {
         private readonly IUsuarioServico _servicoUsuarios;
-
+        
 
         public UsuarioController()
         {
-            _servicoUsuarios = new UsuarioServico(new UsuarioRepositorio());          
+            _servicoUsuarios = new UsuarioServico(new UsuarioRepositorio());
+            
         }
 
         public ActionResult Index()
@@ -37,6 +41,11 @@ namespace SGCFT.Apresentacao.Controllers
                 ViewBag.Sucesso = retorno.Sucesso;
                 ViewBag.Mensagens = retorno.Mensagens;
             }
+            return View();
+        }
+
+        public ActionResult Login()
+        {
             return View();
         }
 

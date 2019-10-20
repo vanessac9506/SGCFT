@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F010BA92-E4F7-46FF-86C8-DC7D6D97008A}</ProjectGuid>
+    <ProjectGuid>{60139545-19B8-4C1E-A62F-5FB0914165AA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SGCFT.Dominio</RootNamespace>
-    <AssemblyName>SGCFT.Dominio</AssemblyName>
+    <RootNamespace>SGCFT.Seguranca</RootNamespace>
+    <AssemblyName>SGCFT.Seguranca</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -54,54 +54,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contratos\Repositorios\IAcessoRepositorio.cs" />
-    <Compile Include="Contratos\Repositorios\IAlternativaRepositorio.cs" />
-    <Compile Include="Contratos\Repositorios\IModuloRepositorio.cs" />
-    <Compile Include="Contratos\Repositorios\IPerguntaRepositorio.cs" />
-    <Compile Include="Contratos\Repositorios\IRespostaRepositorio.cs" />
-    <Compile Include="Contratos\Repositorios\ITreinamentoRepositorio.cs" />
-    <Compile Include="Contratos\Repositorios\IUsuarioRepositorio.cs" />
-    <Compile Include="Contratos\Repositorios\IVideoRepositorio.cs" />
-    <Compile Include="Contratos\Servicos\IAcessoServico.cs" />
-    <Compile Include="Contratos\Servicos\IAlternativaServico.cs" />
-    <Compile Include="Contratos\Servicos\IModuloServico.cs" />
-    <Compile Include="Contratos\Servicos\IPerguntaServico.cs" />
-    <Compile Include="Contratos\Servicos\IRespostaServico.cs" />
-    <Compile Include="Contratos\Servicos\ITreinamentoServico.cs" />
-    <Compile Include="Contratos\Servicos\IUsuarioServico.cs" />
-    <Compile Include="Contratos\Servicos\IVideoServico.cs" />
-    <Compile Include="Entidades\Acesso.cs" />
-    <Compile Include="Entidades\Alternativa.cs" />
-    <Compile Include="Entidades\Modulo.cs" />
-    <Compile Include="Entidades\Pergunta.cs" />
-    <Compile Include="Entidades\Resposta.cs" />
-    <Compile Include="Entidades\Treinamento.cs" />
-    <Compile Include="Entidades\Usuario.cs" />
-    <Compile Include="Entidades\Video.cs" />
-    <Compile Include="Entidades\VideoConteudo.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Contexto\AspNetContext.cs" />
+    <Compile Include="Migrations\201910201419577_Identity_01_CriacaoInicial.cs" />
+    <Compile Include="Migrations\201910201419577_Identity_01_CriacaoInicial.Designer.cs">
+      <DependentUpon>201910201419577_Identity_01_CriacaoInicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Servicos\AcessoServico.cs" />
-    <Compile Include="Servicos\AlternativaServico.cs" />
-    <Compile Include="Servicos\ModuloServico.cs" />
-    <Compile Include="Servicos\PerguntaServico.cs" />
-    <Compile Include="Servicos\RespostaServico.cs" />
-    <Compile Include="Servicos\TreinamentoServico.cs" />
-    <Compile Include="Servicos\UsuarioServico.cs" />
-    <Compile Include="Servicos\VideoServico.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SGCFT.Seguranca\SGCFT.Seguranca.csproj">
-      <Project>{60139545-19B8-4C1E-A62F-5FB0914165AA}</Project>
-      <Name>SGCFT.Seguranca</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SGCFT.Utilitario\SGCFT.Utilitario.csproj">
-      <Project>{61457085-FA4C-4B1C-9976-C07C74DCCC04}</Project>
-      <Name>SGCFT.Utilitario</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Migrations\201910201419577_Identity_01_CriacaoInicial.resx">
+      <DependentUpon>201910201419577_Identity_01_CriacaoInicial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

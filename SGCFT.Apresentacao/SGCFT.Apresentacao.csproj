@@ -51,6 +51,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -244,6 +250,10 @@
     <ProjectReference Include="..\SGCFT.Dominio\SGCFT.Dominio.csproj">
       <Project>{F010BA92-E4F7-46FF-86C8-DC7D6D97008A}</Project>
       <Name>SGCFT.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGCFT.Seguranca\SGCFT.Seguranca.csproj">
+      <Project>{60139545-19B8-4C1E-A62F-5FB0914165AA}</Project>
+      <Name>SGCFT.Seguranca</Name>
     </ProjectReference>
     <ProjectReference Include="..\SGCFT.Utilitario\SGCFT.Utilitario.csproj">
       <Project>{61457085-FA4C-4B1C-9976-C07C74DCCC04}</Project>
