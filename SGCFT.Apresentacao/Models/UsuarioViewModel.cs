@@ -15,6 +15,7 @@ namespace SGCFT.Apresentacao.Models
         [Required(ErrorMessage ="Informe o nome")]
         public string Nome { get; set; }
         [Required(ErrorMessage = "Informe a senha")]
+        [MinLength(6, ErrorMessage = "A senha tem que ter no minimo 6 caracteres")]
         public string Senha { get; set; }
         [Required(ErrorMessage = "Informe o email")]
         [EmailAddress(ErrorMessage = "Email inválido")]
