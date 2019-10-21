@@ -14,7 +14,7 @@ using System.Web.Mvc;
 
 namespace SGCFT.Apresentacao.Controllers
 {
-    public class UsuarioController: Controller
+    public class UsuarioController : Controller
     {
         private readonly IUsuarioServico _servicoUsuarios;
 
@@ -24,21 +24,33 @@ namespace SGCFT.Apresentacao.Controllers
         }
 
         public ActionResult Index()
-        {   
+        {
             return View();
         }
 
         [HttpPost]
         public ActionResult Index(UsuarioViewModel usuarioViewModel)
         {
-           if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 Usuario usuario = usuarioViewModel.ConverterParaDominio();
                 Retorno retorno = _servicoUsuarios.InserirUsuario(usuario);
                 ViewBag.Sucesso = retorno.Sucesso;
                 ViewBag.Mensagens = retorno.Mensagens;
+
+                if(retorno.Sucesso)
+                {
+                    var login = new LoginViewModel()
+                    {
+                        Login = usuario.Email,
+                        Senha = usuario.Senha
+                    };
+
+                    return Login(login);
+                }
             }
-            return View();
+
+            return Login();
         }
 
         public ActionResult Login()
