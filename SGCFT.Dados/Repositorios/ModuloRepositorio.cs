@@ -30,6 +30,12 @@ namespace SGCFT.Dados.Repositorios
             _contexto.SaveChanges();
         }
 
+        public List<Modulo> selecionarModulosPorTreinamento(int idTreinamento)
+        {
+            var query = _contexto.Modulo.Where(x => x.IdTreinamento == idTreinamento);
+            return query.ToList();
+        }
+
         public void Dispose()
         {
             if (_contexto != null)
