@@ -1,60 +1,67 @@
 ﻿@model SGCFT.Apresentacao.Models.VideoViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Cadastro de Video";
 }
 @section scripts
 {
     @Scripts.Render("~/bundles/jqueryval")
 }
 
-<h2>Cadastro de Video</h2>
-
-@if (ViewBag.Sucesso != null)
-{
-    if ((bool)ViewBag.Sucesso)
-    {
-        <div class="alert alert-success" role="alert">Video cadastrado com sucesso</div>
-    }
-    else
-    {
-        <div class="alert alert-danger" role="alert">
-            @foreach (string mensagem in ViewBag.Mensagens as List<string>)
+<section class="section section-md bg-gray-100">
+    <div class="container">
+        @if (ViewBag.Sucesso != null)
+        {
+            if ((bool)ViewBag.Sucesso)
             {
-                @mensagem
-                <br />
+                <div class="alert alert-success" role="alert">Video cadastrado com sucesso</div>
             }
-        </div>
-    }
-}
+            else
+            {
+                <div class="alert alert-danger" role="alert">
+                    @foreach (string mensagem in ViewBag.Mensagens as List<string>)
+                    {
+                        @mensagem
+                        <br />
+                    }
+                </div>
+            }
+        }
 
+        <h3 class="text-center">Cadastro de Video</h3>
 
-@using (Html.BeginForm("Index", "Video", FormMethod.Post, new { id = "formVideo", @class = "form-group", enctype = "multipart/form-data" }))
-{
-        <div class="row">
-            <div class="form-group">
-                <label class="control-label col-md-2">IdModulo: </label>
-                <div class="col-md-10">
-                    @Html.TextBoxFor(x => x.IdModulo, new { id = "txtIdModulo", @class = "form-control", autocomplete = "off" })
-                    <label class="warning">@Html.ValidationMessageFor(x => x.IdModulo)</label>
+        @using (Html.BeginForm("Index", "Video", FormMethod.Post, new { id = "formVideo", @class = "rd-form", enctype = "multipart/form-data" }))
+        {
+            <div class="row row-x-16 row-20">
+                <div class="col-md-6">
+                    <div class="form-wrap">
+                        @Html.TextBoxFor(x => x.IdModulo, new { id = "txtIdModulo", @class = "form-input", autocomplete = "off" })
+                        <label class="form-label" for="txtIdModulo">Módulo</label>
+                        <label class="warning">@Html.ValidationMessageFor(x => x.IdModulo)</label>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-wrap">
+                        @Html.TextBoxFor(x => x.Titulo, new { id = "txtTitulo", @class = "form-input", autocomplete = "off" })
+                        <label class="form-label" for="txtTitulo">Título</label>
+                        <label class="warning">@Html.ValidationMessageFor(x => x.Titulo)</label>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-wrap">
+                        <label class="control-label-custom">Vídeo</label>
+                        @Html.TextBoxFor(x => x.ConteudoVideo, new { id = "txtConteudoVideo", @class = "form-input col-md-12", autocomplete = "off", type = "file" })
+                        <label class="warning">@Html.ValidationMessageFor(x => x.ConteudoVideo)</label>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-wrap form-button">
+                        <button class="button button-block button-primary" type="submit">Salvar</button>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="control-label col-md-2">Título: </label>
-                <div class="col-md-10">
-                    @Html.TextBoxFor(x => x.Titulo, new { id = "txtTitulo", @class = "form-control", autocomplete = "off" })
-                    <label class="warning">@Html.ValidationMessageFor(x => x.Titulo)</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-2">Vídeo: </label>
-                <div class="col-md-10">
-                    @Html.TextBoxFor(x => x.ConteudoVideo, new { id = "txtConteudoVideo", @class = "form-control", autocomplete = "off", type="file" })
-                    <label class="warning">@Html.ValidationMessageFor(x => x.ConteudoVideo)</label>
-                </div>
-            </div>
-        </div>
-
-    <div class="row">
-        <button type="submit" class="btn btn-success">Salvar</button>
+        }
     </div>
-}
+</section>

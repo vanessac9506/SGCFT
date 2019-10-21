@@ -15,6 +15,7 @@ namespace SGCFT.Apresentacao.Models
         [Required(ErrorMessage = "Informe o título")]
         public string Titulo { get; set; }
         public string Url { get; set; }
+        [Required(ErrorMessage = "Informe o vídeo")]
         public HttpPostedFileBase ConteudoVideo { get; set; }
 
         public Video ConverterParaDominio()

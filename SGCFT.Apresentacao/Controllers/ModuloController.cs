@@ -42,7 +42,11 @@ namespace SGCFT.Apresentacao.Controllers
                 ViewBag.Sucesso = retorno.Sucesso;
                 ViewBag.Mensagens = retorno.Mensagens;
             }
-            return View();
+
+            var treinamentos = _treinamentoRepositorio.selecionarTreinamentosPorUsuario(1);
+            moduloViewModel.ListaTreinamentos = treinamentos.Select(x => new TreinamentoViewModel(x)).ToList();
+
+            return View(moduloViewModel);
         }
     }
 }
