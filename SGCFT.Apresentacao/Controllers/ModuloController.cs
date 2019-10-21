@@ -13,6 +13,7 @@ using System.Web.Mvc;
 
 namespace SGCFT.Apresentacao.Controllers
 {
+    [Authorize]
     public class ModuloController: Controller
     {
         private readonly IModuloServico _servicoModulos;

@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace SGCFT.Apresentacao.Controllers
 {
+    [Authorize]
     public class PerguntaController: Controller
     {
         private readonly IPerguntaServico _servicoPerguntas;

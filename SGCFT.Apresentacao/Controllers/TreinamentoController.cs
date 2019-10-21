@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace SGCFT.Apresentacao.Controllers
 {
+    [Authorize]
     public class TreinamentoController: Controller
     {
         private readonly ITreinamentoServico _servicoTreinamentos;
