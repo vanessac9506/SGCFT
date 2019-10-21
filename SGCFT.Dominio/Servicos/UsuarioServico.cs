@@ -53,7 +53,7 @@ namespace SGCFT.Dominio.Servicos
                     IdentityUser identityUser = new IdentityUser();
                     identityUser.Email = usuario.Email;
                     identityUser.EmailConfirmed = true;
-                    identityUser.UserName = usuario.Cpf != null ? usuario.Cpf.Value.ToString() : usuario.Cnpj.Value.ToString();
+                    identityUser.UserName = usuario.Email;
                     _userManager.Create(identityUser, usuario.Senha);
                 }
             }

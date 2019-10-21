@@ -28,5 +28,10 @@ namespace SGCFT.Seguranca.Contexto
             modelBuilder.Properties<string>().Configure(x => x.HasColumnType("varchar"));
             modelBuilder.Properties<string>().Configure(x => x.HasMaxLength(256));
         }
+
+        public static AspNetContext Create()
+        {
+            return new AspNetContext();
+        }
     }
 }

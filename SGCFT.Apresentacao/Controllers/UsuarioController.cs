@@ -1,15 +1,14 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 using SGCFT.Apresentacao.Models;
 using SGCFT.Dados.Repositorios;
 using SGCFT.Dominio.Contratos.Servicos;
 using SGCFT.Dominio.Entidades;
 using SGCFT.Dominio.Servicos;
 using SGCFT.Seguranca.Contexto;
+using SGCFT.Seguranca.Manager;
 using SGCFT.Utilitario;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
@@ -18,12 +17,10 @@ namespace SGCFT.Apresentacao.Controllers
     public class UsuarioController: Controller
     {
         private readonly IUsuarioServico _servicoUsuarios;
-        
 
         public UsuarioController()
         {
-            _servicoUsuarios = new UsuarioServico(new UsuarioRepositorio());
-            
+            this._servicoUsuarios = new UsuarioServico(new UsuarioRepositorio());
         }
 
         public ActionResult Index()
@@ -47,6 +44,34 @@ namespace SGCFT.Apresentacao.Controllers
         public ActionResult Login()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(LoginViewModel loginViewModel)
+        {
+            var userManager = HttpContext.GetOwinContext().GetUserManager<UserAppManager>();
+
+            var user = userManager.Find(loginViewModel.Login, loginViewModel.Senha);
+
+            if (user != null)
+            {
+                var appAsign = HttpContext.GetOwinContext().Get<AppSignInManager>();
+                appAsign.SignIn(user, false, false);
+
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ViewBag.Mensagem = "Usuário ou senha estão incorretos";
+                return View(loginViewModel);
+            }
+        }
+
+        public ActionResult Logout()
+        {
+            var authenticationManager = HttpContext.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            return RedirectToAction("Index", "Home");
         }
 
     }
