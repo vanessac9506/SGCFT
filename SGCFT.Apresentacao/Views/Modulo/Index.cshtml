@@ -27,7 +27,7 @@
 {
     <div class="row">
         <div class="form-group">
-            <label class="control-label col-md-2">Treinamento: </label>
+            <label class="control-label col-md-2">Id Treinamento: </label>
             <div class="col-md-10">
                 @Html.DropDownListFor(x=>x.IdTreinamento,new SelectList(Model.ListaTreinamentos,"Id","Tema"),new { id = "ddlTreinamentos", @class = "form-control" })
                 <label class="warning">@Html.ValidationMessageFor(x => x.IdTreinamento)</label>
