@@ -1,5 +1,6 @@
 ﻿using SGCFT.Apresentacao.Models;
 using SGCFT.Dados.Repositorios;
+using SGCFT.Dominio.Contratos.Repositorios;
 using SGCFT.Dominio.Contratos.Servicos;
 using SGCFT.Dominio.Entidades;
 using SGCFT.Dominio.Servicos;
@@ -16,10 +17,12 @@ namespace SGCFT.Apresentacao.Controllers
     public class TreinamentoController: Controller
     {
         private readonly ITreinamentoServico _servicoTreinamentos;
+        private readonly ITreinamentoRepositorio _repositorioTreinamentos;
 
         public TreinamentoController()
         {
             _servicoTreinamentos = new TreinamentoServico(new TreinamentoRepositorio());
+            _repositorioTreinamentos = new TreinamentoRepositorio();
         }
 
         public ActionResult Index()
@@ -38,6 +41,16 @@ namespace SGCFT.Apresentacao.Controllers
                 ViewBag.Mensagens = retorno.Mensagens;
             }
             return View();
+        }
+
+        public ActionResult Editar(int id)
+        {
+            TreinamentoViewModel treinamentoViewModel = new TreinamentoViewModel();
+            var treinamento = _repositorioTreinamentos.ObterPorId(id);
+            treinamentoViewModel.Tema = treinamento.Tema;
+            treinamentoViewModel.TipoTreinamento = treinamento.TipoTreinamento;
+
+            return View(treinamentoViewModel);
         }
 
     }

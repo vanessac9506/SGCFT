@@ -36,6 +36,11 @@ namespace SGCFT.Dados.Repositorios
             return query.ToList();
         }
 
+        public Treinamento ObterPorId(int id)
+        {
+            return _contexto.Treinamento.SingleOrDefault(x => x.Id == id);
+        }
+
 
         public void Dispose()
         {
