@@ -1,4 +1,5 @@
-﻿using SGCFT.Dados.Repositorios;
+﻿using SGCFT.Apresentacao.Models;
+using SGCFT.Dados.Repositorios;
 using SGCFT.Dominio.Contratos.Servicos;
 using SGCFT.Dominio.Entidades;
 using SGCFT.Dominio.Servicos;
@@ -10,7 +11,7 @@ using System.Web.Mvc;
 
 namespace SGCFT.Apresentacao.Controllers
 {
-    public class RespostaController: Controller
+    public class RespostaController: BaseController
     {
         private readonly IRespostaServico _servicoRespostas;
 

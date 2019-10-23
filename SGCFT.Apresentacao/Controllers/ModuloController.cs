@@ -14,7 +14,7 @@ using System.Web.Mvc;
 namespace SGCFT.Apresentacao.Controllers
 {
     [Authorize]
-    public class ModuloController: Controller
+    public class ModuloController: BaseController
     {
         private readonly IModuloServico _servicoModulos;
         private readonly ITreinamentoRepositorio _treinamentoRepositorio; 

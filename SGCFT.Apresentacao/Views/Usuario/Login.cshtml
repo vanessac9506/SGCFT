@@ -7,42 +7,86 @@
     @Scripts.Render("~/bundles/jqueryval")
 }
 
-<section class="section section-md bg-gray-100">
-    <div class="container">
+<div class="row text-center">
+    <div class="col-md-12" style="padding: 0">
         @if (ViewBag.Mensagem != null)
         {
             <div class="alert alert-danger" role="alert">
                 @ViewBag.Mensagem
             </div>
         }
-
-        <h3 class="text-center">Login</h3>
-
-        @using (Html.BeginForm("Login", "Usuario", FormMethod.Post, new { id = "formLogin", @class = "rd-form" }))
-        {
-            <div class="row row-x-16 row-20">
-                <div class="col-md-6">
-                    <div class="form-wrap">
-                        @Html.TextBoxFor(x => x.Login, new { id = "txtLogin", @class = "form-input", autocomplete = "off" })
-                        <label class="form-label" for="txtLogin">Informe seu e-mail</label>
-                        <label class="warning">@Html.ValidationMessageFor(x => x.Login)</label>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="form-wrap">
-                        @Html.PasswordFor(x => x.Senha, new { id = "txtSenha", @class = "form-input", autocomplete = "off" })
-                        <label class="form-label" for="txtSenha">Senha</label>
-                        <label class="warning">@Html.ValidationMessageFor(x => x.Senha)</label>
-                    </div>
-                </div>
-
-                <div class="col-md-12">
-                    <div class="form-wrap form-button">
-                        <button class="button button-block button-primary" type="submit">Entrar</button>
-                    </div>
-                </div>
-            </div>
-        }
     </div>
-</section>
+</div>
+
+<div class="row">
+    <div class="col-md-6" style="padding: 0">
+        <section class="section section-md bg-gray-100">
+            <div class="container">
+                <h3 class="text-center">Acesse sua conta através de seu e-mail e senha</h3>
+
+                @using (Html.BeginForm("Login", "Usuario", FormMethod.Post, new { id = "formLogin", @class = "rd-form" }))
+                {
+                    <div class="row row-x-16 row-20">
+                        <div class="col-md-6">
+                            <div class="form-wrap">
+                                @Html.TextBoxFor(x => x.Login, new { id = "txtLogin", @class = "form-input", autocomplete = "off" })
+                                <label class="form-label" for="txtLogin">Informe seu e-mail</label>
+                                <label class="warning">@Html.ValidationMessageFor(x => x.Login)</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-wrap">
+                                @Html.PasswordFor(x => x.Senha, new { id = "txtSenha", @class = "form-input", autocomplete = "off" })
+                                <label class="form-label" for="txtSenha">Senha</label>
+                                <label class="warning">@Html.ValidationMessageFor(x => x.Senha)</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-wrap form-button">
+                                <button class="button button-block button-primary" type="submit">Entrar</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+    </div>
+    <div class="col-md-6" style="padding: 0">
+        <section class="section section-md bg-gray-100">
+            <div class="container">
+                <h3 class="text-center">Caso não possua uma conta, realize seu cadastro aqui:</h3>
+
+                <form action="/" class="rd-form" method="post" novalidate="novalidate">
+                    <div class="row row-x-16 row-20">
+                        <div class="col-md-6" style="visibility: hidden">
+                            <div class="form-wrap">
+                                @Html.TextBoxFor(x => x.Login, new { id = "txtLogin", @class = "form-input", autocomplete = "off" })
+                                <label class="form-label" for="txtLogin">Informe seu e-mail</label>
+                                <label class="warning">@Html.ValidationMessageFor(x => x.Login)</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6" style="visibility: hidden">
+                            <div class="form-wrap">
+                                @Html.PasswordFor(x => x.Senha, new { id = "txtSenha", @class = "form-input", autocomplete = "off" })
+                                <label class="form-label" for="txtSenha">Senha</label>
+                                <label class="warning">@Html.ValidationMessageFor(x => x.Senha)</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-wrap form-button">
+                                <a href="@Url.Action("Index", "Usuario" )" class="button button-block button-primary">
+                                    Cadastrar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+

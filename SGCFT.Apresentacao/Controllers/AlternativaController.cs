@@ -13,7 +13,7 @@ using System.Web.Mvc;
 namespace SGCFT.Apresentacao.Controllers
 {
     [Authorize]
-    public class AlternativaController: Controller
+    public class AlternativaController: BaseController
     {
         private readonly IAlternativaServico _servicoAlternativas;
         public AlternativaController()

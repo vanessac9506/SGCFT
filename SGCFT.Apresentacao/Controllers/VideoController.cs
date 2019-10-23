@@ -13,7 +13,7 @@ using System.Web.Mvc;
 namespace SGCFT.Apresentacao.Controllers
 {
     [Authorize]
-    public class VideoController: Controller
+    public class VideoController: BaseController
     {
         private readonly IVideoServico _servicoVideos;
 
