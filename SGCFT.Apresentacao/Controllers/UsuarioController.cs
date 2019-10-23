@@ -14,7 +14,7 @@ using System.Web.Mvc;
 
 namespace SGCFT.Apresentacao.Controllers
 {
-    public class UsuarioController : Controller
+    public class UsuarioController : BaseController
     {
         private readonly IUsuarioServico _servicoUsuarios;
 
