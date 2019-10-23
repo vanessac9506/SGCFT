@@ -43,6 +43,11 @@ namespace SGCFT.Dados.Repositorios
             return _contexto.Usuario.Any(x => x.Email == email);
         }
 
+        public int ObterIdUsuarioPorEmail(string email)
+        {
+            return _contexto.Usuario.SingleOrDefault(x => x.Email == email)?.Id ?? 0;
+        }
+
         public void Dispose()
         {
             if (_contexto != null)

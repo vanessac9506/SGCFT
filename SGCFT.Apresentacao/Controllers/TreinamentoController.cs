@@ -5,16 +5,12 @@ using SGCFT.Dominio.Contratos.Servicos;
 using SGCFT.Dominio.Entidades;
 using SGCFT.Dominio.Servicos;
 using SGCFT.Utilitario;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SGCFT.Apresentacao.Controllers
 {
     [Authorize]
-    public class TreinamentoController: Controller
+    public class TreinamentoController: BaseController
     {
         private readonly ITreinamentoServico _servicoTreinamentos;
         private readonly ITreinamentoRepositorio _repositorioTreinamentos;
@@ -36,6 +32,7 @@ namespace SGCFT.Apresentacao.Controllers
             if (ModelState.IsValid)
             {
                 Treinamento treinamento = treinamentoViewModel.ConverterParaDominio();
+                treinamento.IdAutor = base.IdUsuarioAutenticado;
                 Retorno retorno = _servicoTreinamentos.InserirTreinamento(treinamento);
                 ViewBag.Sucesso = retorno.Sucesso;
                 ViewBag.Mensagens = retorno.Mensagens;

@@ -1,9 +1,4 @@
 ﻿using SGCFT.Dominio.Entidades;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SGCFT.Dominio.Contratos.Repositorios
 {
@@ -13,5 +8,6 @@ namespace SGCFT.Dominio.Contratos.Repositorios
         bool ValidarDocumentoCadastrado(long documento, bool isCpf);
         void Inserir(Usuario usuario);
         void Alterar(Usuario usuario);
+        int ObterIdUsuarioPorEmail(string email);
     }
 }

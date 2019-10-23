@@ -12,11 +12,12 @@ namespace SGCFT.Apresentacao
     {
         public void Configuration(IAppBuilder app)
         {
+            //Faço a inicialização dos recursos do AspnetIdentity
             app.CreatePerOwinContext(AspNetContext.Create);
             app.CreatePerOwinContext<UserAppManager>(UserAppManager.Create);
             app.CreatePerOwinContext<AppSignInManager>(AppSignInManager.Create);
 
-            // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=316888
+            //Configurando o cookie, e em caso de não autenticado, redireciono para o a rota Login do controller Usuario;
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,

@@ -34,15 +34,6 @@
         @using (Html.BeginForm("Index", "Treinamento", FormMethod.Post, new { id = "formTreinamento", @class = "rd-form" }))
         {
             <div class="row row-x-16 row-20">
-
-                <div class="col-md-6">
-                    <div class="form-wrap">
-                        @Html.TextBoxFor(x => x.IdAutor, new { id = "txtIdAutor", @class = "form-input", autocomplete = "off" })
-                        <label class="form-label" for="txtIdAutor">IdAutor</label>
-                        <label class="warning">@Html.ValidationMessageFor(x => x.IdAutor)</label>
-                    </div>
-                </div>
-
                 <div class="col-md-6">
                     <div class="form-wrap">
                         @Html.TextBoxFor(x => x.Tema, new { id = "txtTema", @class = "form-input", autocomplete = "off" })
