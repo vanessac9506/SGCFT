@@ -57,12 +57,15 @@
                         <div class="rd-navbar-nav-wrap">
                             <!-- RD Navbar Nav-->
                             <ul class="rd-navbar-nav">
-                                <li class="rd-nav-item active">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "rd-nav-link" })</li>
-                                <li class="rd-nav-item">@Html.ActionLink("Cadastrar treinamento", "Index", "Treinamento", null, new { @class = "rd-nav-link" })</li>
-                                <li class="rd-nav-item">@Html.ActionLink("Cadastrar modulo", "Index", "Modulo", null, new { @class = "rd-nav-link" })</li>
-                                <li class="rd-nav-item">@Html.ActionLink("Cadastrar pergunta", "Index", "Pergunta", null, new { @class = "rd-nav-link" })</li>
-                                <li class="rd-nav-item">@Html.ActionLink("Cadastrar alternativa", "Index", "Alternativa", null, new { @class = "rd-nav-link" })</li>
-                                <li class="rd-nav-item">@Html.ActionLink("Cadastrar video", "Index", "Video", null, new { @class = "rd-nav-link" })</li>
+                                <li class="rd-nav-item active">@Html.ActionLink("Pagina inicial", "Index", "Home", null, new { @class = "rd-nav-link" })</li>
+                                @if (this.Request.IsAuthenticated)
+                                {
+                                    <li class="rd-nav-item">@Html.ActionLink("Cadastrar treinamento", "Index", "Treinamento", null, new { @class = "rd-nav-link" })</li>
+                                    <li class="rd-nav-item">@Html.ActionLink("Cadastrar modulo", "Index", "Modulo", null, new { @class = "rd-nav-link" })</li>
+                                    <li class="rd-nav-item">@Html.ActionLink("Cadastrar pergunta", "Index", "Pergunta", null, new { @class = "rd-nav-link" })</li>
+                                    <li class="rd-nav-item">@Html.ActionLink("Cadastrar alternativa", "Index", "Alternativa", null, new { @class = "rd-nav-link" })</li>
+                                    <li class="rd-nav-item">@Html.ActionLink("Cadastrar video", "Index", "Video", null, new { @class = "rd-nav-link" })</li>
+                                }
                             </ul>
                         </div>
                         <div class="rd-navbar-element">
