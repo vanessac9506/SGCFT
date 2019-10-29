@@ -5,63 +5,97 @@
 @section scripts
 {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#ddlTreinamentos").change(function () {
+                var urlModulos = '@Url.Action("GetDropDown", "Modulo", new { idTreinamento = "trocar" })';
+                urlModulos = urlModulos.replace("trocar", $("#ddlTreinamentos").val());
+                $.ajax({
+                    type: 'GET',
+                    url: urlModulos,
+                    cache: false,
+                    success: function (retorno) {
+                        $("#ddlModulos").html('<option value="">Selecione um módulo</option>');
+                        $(retorno).each(function () {
+                            $("#ddlModulos").append('<option value="' + this.Id + '">' + this.Titulo + '</option>');
+                        });
+                    },
+                    error: function (retorno) {
+                        $("#card-body-video").append('<div class="alert alert-danger" role="alert">Erro ao obter os módulos</div>');
+                    }
+                });
+            });
+        });
+    </script>
 }
 
 <section class="section section-md bg-gray-100">
     <div class="container">
-        @if (ViewBag.Sucesso != null)
-        {
-            if ((bool)ViewBag.Sucesso)
-            {
-                <div class="alert alert-success" role="alert">Video cadastrado com sucesso</div>
-            }
-            else
-            {
-                <div class="alert alert-danger" role="alert">
-                    @foreach (string mensagem in ViewBag.Mensagens as List<string>)
-                    {
-                        @mensagem
-                        <br />
-                    }
-                </div>
-            }
-        }
-
-        <h3 class="text-center">Cadastro de Video</h3>
-
-        @using (Html.BeginForm("Index", "Video", FormMethod.Post, new { id = "formVideo", @class = "rd-form", enctype = "multipart/form-data" }))
-        {
-            <div class="row row-x-16 row-20">
-                <div class="col-md-6">
-                    <div class="form-wrap">
-                        @Html.TextBoxFor(x => x.IdModulo, new { id = "txtIdModulo", @class = "form-input", autocomplete = "off" })
-                        <label class="form-label" for="txtIdModulo">Módulo</label>
-                        <label class="warning">@Html.ValidationMessageFor(x => x.IdModulo)</label>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card border-0">
+                    <div class="card-header">
+                        <h3 class="text-center"><i class="fas fa-plus-circle"></i> Novo Cadastro de Vídeos</h3>
                     </div>
-                </div>
+                    <div class="card-body" id="card-body-video">
 
-                <div class="col-md-6">
-                    <div class="form-wrap">
-                        @Html.TextBoxFor(x => x.Titulo, new { id = "txtTitulo", @class = "form-input", autocomplete = "off" })
-                        <label class="form-label" for="txtTitulo">Título</label>
-                        <label class="warning">@Html.ValidationMessageFor(x => x.Titulo)</label>
-                    </div>
-                </div>
+                        @if (ViewBag.Sucesso != null)
+                        {
+                            if ((bool)ViewBag.Sucesso)
+                            {
+                                <div class="alert alert-success" role="alert">Video cadastrado com sucesso</div>
+                            }
+                            else
+                            {
+                                <div class="alert alert-danger" role="alert">
+                                    @foreach (string mensagem in ViewBag.Mensagens as List<string>)
+                                    {
+                                        @mensagem
+                                        <br />
+                                    }
+                                </div>
+                            }
+                        }
 
-                <div class="col-md-12">
-                    <div class="form-wrap">
-                        <label class="control-label-custom">Vídeo</label>
-                        @Html.TextBoxFor(x => x.ConteudoVideo, new { id = "txtConteudoVideo", @class = "form-input col-md-12", autocomplete = "off", type = "file" })
-                        <label class="warning">@Html.ValidationMessageFor(x => x.ConteudoVideo)</label>
-                    </div>
-                </div>
+                        @using (Html.BeginForm("Index", "Video", FormMethod.Post, new { id = "formVideo", @class = "rd-form", enctype = "multipart/form-data" }))
+                        {
+                            <div class="form-row mt-2">
+                                <div class="form-group col-lg-4">
+                                    <label for="ddlTreinamentos">Seus treinamentos</label>
+                                    @Html.DropDownList("ListaTreinamentos", new SelectList(Model.Treinamentos, "Id", "Tema"), "Selecione um treinamento", new { id = "ddlTreinamentos", @class = "form-control form-select" })
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label for="ddlModulos">Módulo</label>
+                                    @Html.DropDownListFor(x => x.IdModulo, Enumerable.Empty<SelectListItem>(), "Selecione um módulo", new { id = "ddlModulos", @class = "form-control form-select" })
+                                    <span class="warning d-inline">@Html.ValidationMessageFor(x => x.IdModulo)</span>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label for="txtTitulo">Título</label>
+                                    @Html.TextBoxFor(x => x.Titulo, new { id = "txtTitulo", @class = "form-input", autocomplete = "off" })
+                                    <span class="warning d-inline">@Html.ValidationMessageFor(x => x.Titulo)</span>
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <label for="txtConteudoVideo">Vídeo</label>
+                                    @Html.TextBoxFor(x => x.ConteudoVideo, new { id = "txtConteudoVideo", @class = "form-input col-md-12", autocomplete = "off", type = "file", accept = ".mp4" })
+                                    <span class="warning d-inline">@Html.ValidationMessageFor(x => x.ConteudoVideo)</span>
+                                </div>
 
-                <div class="col-md-12">
-                    <div class="form-wrap form-button">
-                        <button class="button button-block button-primary" type="submit">Salvar</button>
+                                <div class="text-right col-lg-12">
+                                    <a href="@Url.Action("Index")" class="btn btn-outline-secondary btn-sm" role="button" aria-label="Voltar para a página anterior" id="btnVoltarTipoPublicacao">
+                                        <i class="fas fa-undo"></i> Voltar
+                                    </a>
+                                    <button class="btn btn-sm btn-outline-success" type="submit" aria-label="Salvar tipo de publicação" id="btnSalvarNovoTipoPublicacao">
+                                        <i class="fas fa-check-circle"></i> Salvar
+                                    </button>
+                                </div>
+
+                                @Html.AntiForgeryToken()
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
-        }
+        </div>
     </div>
+
 </section>

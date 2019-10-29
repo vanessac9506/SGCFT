@@ -1,11 +1,8 @@
 ﻿using SGCFT.Dados.Contextos;
 using SGCFT.Dominio.Contratos.Repositorios;
 using SGCFT.Dominio.Entidades;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SGCFT.Dados.Repositorios
 {
@@ -28,6 +25,12 @@ namespace SGCFT.Dados.Repositorios
         {
             _contexto.Modulo.Add(modulo);
             _contexto.SaveChanges();
+        }
+
+        public List<Modulo> SelecionarPorIdTreinamento(int idTreinamento)
+        {
+            var query = _contexto.Modulo.Where(x => x.IdTreinamento == idTreinamento);
+            return query.ToList();
         }
 
         public void Dispose()

@@ -21,23 +21,25 @@ namespace SGCFT.Apresentacao.Controllers
             _repositorioTreinamentos = new TreinamentoRepositorio();
         }
 
-        public ActionResult Index()
+        public ActionResult Novo()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Index(TreinamentoViewModel treinamentoViewModel)
+        public ActionResult Novo(TreinamentoViewModel treinamentoViewModel)
         {
+            Retorno retorno = null;
             if (ModelState.IsValid)
             {
                 Treinamento treinamento = treinamentoViewModel.ConverterParaDominio();
                 treinamento.IdAutor = base.IdUsuarioAutenticado;
-                Retorno retorno = _servicoTreinamentos.InserirTreinamento(treinamento);
-                ViewBag.Sucesso = retorno.Sucesso;
-                ViewBag.Mensagens = retorno.Mensagens;
+
+                treinamentoViewModel.Modulos.ForEach(x => treinamento.AdicionarModulo(x));
+
+                retorno = _servicoTreinamentos.InserirTreinamento(treinamento);
             }
-            return View();
+            return Json(retorno);
         }
 
         public ActionResult Editar(int id)

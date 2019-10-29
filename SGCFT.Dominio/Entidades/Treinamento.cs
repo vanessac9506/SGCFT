@@ -30,6 +30,17 @@ namespace SGCFT.Dominio.Entidades
         public EnumTipoTreinamento TipoTreinamento { get; set; }
         public string Senha { get; set; }
 
+        public Treinamento AdicionarModulo(string modulo)
+        {
+            if (this.Modulos == null)
+                this.Modulos = new List<Modulo>();
+
+            Modulo moduloAdicionar = new Modulo(this.Id, modulo);
+            this.Modulos.Add(moduloAdicionar);
+
+            return this;
+        }
+
         public Retorno ValidarDominio()
         {
             Retorno retorno = new Retorno();
@@ -44,8 +55,8 @@ namespace SGCFT.Dominio.Entidades
                 retorno.AdicionarErro("Tipo de treinamento inválido!");
             // não tem necessidade de validar a lista de módulo porque pode ser nula
 
-            if (string.IsNullOrEmpty(this.Senha) || string.IsNullOrWhiteSpace(this.Senha))
-                retorno.AdicionarErro("Senha inválido!");
+            if (this.TipoTreinamento == EnumTipoTreinamento.Privado && (string.IsNullOrEmpty(this.Senha) || string.IsNullOrWhiteSpace(this.Senha)))
+                retorno.AdicionarErro("Senha inválida!");
             return retorno;
         }
 

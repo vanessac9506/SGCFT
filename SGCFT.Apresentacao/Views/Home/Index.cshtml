@@ -1,4 +1,5 @@
-﻿@{
+﻿@model SGCFT.Apresentacao.Models.HomeViewModel
+@{
     ViewBag.Title = "Home";
 }
 
@@ -8,84 +9,41 @@
         <div class="badge wow fadeIn">Treinamentos</div>
         <h3 class="wow fadeIn">Algumas sugestões para você</h3>
         <div class="row row-30 row-xl-60">
-            <div class="col-sm-6 col-lg-4">
-                <!-- Box Modern-->
-                <article class="box-modern wow fadeIn" data-anime="circles-2">
-                    <div class="box-modern-media">
-                        <div class="box-modern-icon mdi mdi-video"></div>
-                        <div class="box-modern-circle box-modern-circle-1"></div>
+            @if (Model.ListaPrincipaisVideos == null || !Model.ListaPrincipaisVideos.Any())
+            {
+                <div class="col-sm-6 col-lg-4">
+                    <!-- Box Modern-->
+                    <article class="box-modern wow fadeIn" data-anime="circles-2">
+                        <div class="box-modern-media">
+                            <div class="box-modern-icon mdi mdi-video"></div>
+                            <div class="box-modern-circle box-modern-circle-1"></div>
+                        </div>
+                        <p class="box-modern-title">Treinamento</p>
+                        <div class="box-modern-text">
+                            <p>Nenhum vídeo cadastrado ainda</p>
+                        </div>
+                    </article>
+                </div>
+            }
+            else
+            {
+                foreach (var item in Model.ListaPrincipaisVideos)
+                {
+                    <div class="col-sm-6 col-lg-4">
+                        <!-- Box Modern-->
+                        <article class="box-modern wow fadeIn" data-anime="circles-2">
+                            <div class="box-modern-media">
+                                <div class="box-modern-icon mdi mdi-video"></div>
+                                <div class="box-modern-circle box-modern-circle-1"></div>
+                            </div>
+                            <p class="box-modern-title">Treinamento @item.NomeTreinamento</p>
+                            <div class="box-modern-text">
+                                @Html.ActionLink(item.TituloVideo, "Exibicao", "Video", new { modulo = item.NomeModulo, idModulo = item.IdModulo }, new { @class="link" })
+                            </div>
+                        </article>
                     </div>
-                    <p class="box-modern-title">Video</p>
-                    <div class="box-modern-text">
-                        <p>Colocar video aqui</p>
-                    </div>
-                </article>
-            </div>
-            <div class="col-sm-6 col-lg-4">
-                <!-- Box Modern-->
-                <article class="box-modern wow fadeIn" data-anime="circles-2">
-                    <div class="box-modern-media">
-                        <div class="box-modern-icon mdi mdi-video"></div>
-                        <div class="box-modern-circle box-modern-circle-1"></div>
-                    </div>
-                    <p class="box-modern-title">Treinamento</p>
-                    <div class="box-modern-text">
-                        <p>Colocar video aqui</p>
-                    </div>
-                </article>
-            </div>
-            <div class="col-sm-6 col-lg-4">
-                <!-- Box Modern-->
-                <article class="box-modern wow fadeIn" data-anime="circles-2">
-                    <div class="box-modern-media">
-                        <div class="box-modern-icon mdi mdi-video"></div>
-                        <div class="box-modern-circle box-modern-circle-1"></div>
-                    </div>
-                    <p class="box-modern-title">Treinamento</p>
-                    <div class="box-modern-text">
-                        <p>Colocar video aqui</p>
-                    </div>
-                </article>
-            </div>
-            <div class="col-sm-6 col-lg-4">
-                <!-- Box Modern-->
-                <article class="box-modern wow fadeIn" data-anime="circles-2">
-                    <div class="box-modern-media">
-                        <div class="box-modern-icon mdi mdi-video"></div>
-                        <div class="box-modern-circle box-modern-circle-1"></div>
-                    </div>
-                    <p class="box-modern-title">Treinamento</p>
-                    <div class="box-modern-text">
-                        <p>Colocar video aqui</p>
-                    </div>
-                </article>
-            </div>
-            <div class="col-sm-6 col-lg-4">
-                <!-- Box Modern-->
-                <article class="box-modern wow fadeIn" data-anime="circles-2">
-                    <div class="box-modern-media">
-                        <div class="box-modern-icon mdi mdi-video"></div>
-                        <div class="box-modern-circle box-modern-circle-1"></div>
-                    </div>
-                    <p class="box-modern-title">Treinamento</p>
-                    <div class="box-modern-text">
-                        <p>Colocar video aqui</p>
-                    </div>
-                </article>
-            </div>
-            <div class="col-sm-6 col-lg-4">
-                <!-- Box Modern-->
-                <article class="box-modern wow fadeIn" data-anime="circles-2">
-                    <div class="box-modern-media">
-                        <div class="box-modern-icon mdi mdi-video"></div>
-                        <div class="box-modern-circle box-modern-circle-1"></div>
-                    </div>
-                    <p class="box-modern-title">Treinamento</p>
-                    <div class="box-modern-text">
-                        <p>Colocar video aqui</p>
-                    </div>
-                </article>
-            </div>
+                }
+            }
         </div>
     </div>
 </section>

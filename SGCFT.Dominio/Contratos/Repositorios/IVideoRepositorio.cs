@@ -1,10 +1,5 @@
 ﻿using SGCFT.Dominio.Entidades;
-using SGCFT.Utilitario;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SGCFT.Dominio.Contratos.Repositorios
 {
@@ -12,5 +7,8 @@ namespace SGCFT.Dominio.Contratos.Repositorios
     {
         void Inserir(Video video);
         void Alterar(Video video);
+        List<Video> SelecionarVideosParaExibicao();
+        Video ObterVideoPorIdModulo(int idModulo);
+        byte[] ObterConteudoVideoPorId(int id);
     }
 }

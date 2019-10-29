@@ -17,7 +17,7 @@ namespace SGCFT.Apresentacao.Models
         public string Url { get; set; }
         [Required(ErrorMessage = "Informe o vídeo")]
         public HttpPostedFileBase ConteudoVideo { get; set; }
-
+        public List<TreinamentoViewModel> Treinamentos { get; set; }
         public Video ConverterParaDominio()
         {
             byte[] conteudo;
