@@ -30,6 +30,12 @@ namespace SGCFT.Dados.Repositorios
             _contexto.SaveChanges();
         }
 
+        public List<Pergunta> SelecionarPorIdUsuario(int idUsuario)
+        {
+            var query = _contexto.Pergunta.Where(x => x.IdAutor == idUsuario);
+            return query.ToList();
+        }
+
         public void Dispose()
         {
             if (_contexto != null)

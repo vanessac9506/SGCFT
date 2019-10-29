@@ -11,5 +11,6 @@ namespace SGCFT.Dominio.Contratos.Repositorios
     {
         void Inserir(Pergunta pergunta);
         void Alterar(Pergunta pergunta);
+        List<Pergunta> SelecionarPorIdUsuario(int idUsuario);
     }
 }

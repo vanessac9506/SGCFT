@@ -33,6 +33,7 @@ namespace SGCFT.Apresentacao.Controllers
             if (ModelState.IsValid)
             {
                 Pergunta pergunta = perguntaViewModel.ConverterParaDominio();
+                pergunta.IdAutor = base.IdUsuarioAutenticado;
                 Retorno retorno = _servicoPerguntas.InserirPergunta(pergunta);
                 ViewBag.Sucesso = retorno.Sucesso;
                 ViewBag.Mensagens = retorno.Mensagens;
