@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="form-group col-lg-12">
                                     <label for="txtConteudoVideo">Vídeo</label>
-                                    @Html.TextBoxFor(x => x.ConteudoVideo, new { id = "txtConteudoVideo", @class = "form-input col-md-12", autocomplete = "off", type = "file" })
+                                    @Html.TextBoxFor(x => x.ConteudoVideo, new { id = "txtConteudoVideo", @class = "form-input col-md-12", autocomplete = "off", type = "file", accept = ".mp4" })
                                     <span class="warning d-inline">@Html.ValidationMessageFor(x => x.ConteudoVideo)</span>
                                 </div>
 

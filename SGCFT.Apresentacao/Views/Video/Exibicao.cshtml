@@ -1,0 +1,30 @@
+﻿@model SGCFT.Apresentacao.Models.VideoExibicaoViewModel
+@{
+    ViewBag.Title = "Exibicao";
+}
+
+<h2>Exibicao - em desenvolvimento</h2>
+
+<section class="section section-md bg-gray-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card border-0">
+                    <div class="card-header">
+                        <h3 class="text-center"><i class="fas fa-video-camera"></i> Treinamento @Model.NomeTreinamento</h3>
+                    </div>
+                    <div class="card-body">
+
+                        <video width="400" controls>
+                            <source src="@Url.Action("ExibirConteudo", "Video", new { titulo = Model.TituloVideo, id = Model.Id })" type="video/mp4">
+                            <source src="mov_bbb.ogg" type="video/ogg">
+                            Your browser does not support HTML5 video.
+                        </video>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

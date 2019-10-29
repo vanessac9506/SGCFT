@@ -196,11 +196,13 @@
     <Compile Include="Models\AlternativaViewModel.cs" />
     <Compile Include="Models\Base\BaseController.cs" />
     <Compile Include="Models\Helpers\HelperClaim.cs" />
+    <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ModuloViewModel.cs" />
     <Compile Include="Models\PerguntaViewModel.cs" />
     <Compile Include="Models\TreinamentoViewModel.cs" />
     <Compile Include="Models\UsuarioViewModel.cs" />
+    <Compile Include="Models\VideoExibicaoViewModel.cs" />
     <Compile Include="Models\VideoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -318,6 +320,7 @@
     <Content Include="Views\Usuario\Login.cshtml" />
     <Content Include="Views\Treinamento\Index.cshtml" />
     <Content Include="Views\Modulo\Index.cshtml" />
+    <Content Include="Views\Video\Exibicao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
