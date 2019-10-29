@@ -1,13 +1,11 @@
 ﻿using SGCFT.Apresentacao.Models;
 using SGCFT.Dados.Repositorios;
+using SGCFT.Dominio.Contratos.Repositorios;
 using SGCFT.Dominio.Contratos.Servicos;
 using SGCFT.Dominio.Entidades;
 using SGCFT.Dominio.Servicos;
 using SGCFT.Utilitario;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SGCFT.Apresentacao.Controllers
@@ -16,15 +14,26 @@ namespace SGCFT.Apresentacao.Controllers
     public class VideoController: BaseController
     {
         private readonly IVideoServico _servicoVideos;
+        private readonly ITreinamentoRepositorio _treinamentoRepositorio;
 
         public VideoController()
         {
             _servicoVideos = new VideoServico(new VideoRepositorio());
+            _treinamentoRepositorio = new TreinamentoRepositorio();
         }
 
         public ActionResult Index()
         {
-            return View();
+            VideoViewModel videoViewModel = IniciarCadastro();
+            return View(videoViewModel);
+        }
+
+        private VideoViewModel IniciarCadastro()
+        {
+            VideoViewModel videoViewModel = new VideoViewModel();
+            var treinamentos = _treinamentoRepositorio.selecionarTreinamentosPorUsuario(base.IdUsuarioAutenticado);
+            videoViewModel.Treinamentos = treinamentos.Select(x => new TreinamentoViewModel(x)).ToList();
+            return videoViewModel;
         }
 
         [HttpPost]
@@ -37,7 +46,8 @@ namespace SGCFT.Apresentacao.Controllers
                 ViewBag.Sucesso = retorno.Sucesso;
                 ViewBag.Mensagens = retorno.Mensagens;
             }
-            return View();
+            var videoViewModelNovo = IniciarCadastro();
+            return View(videoViewModelNovo);
         }
 
     }

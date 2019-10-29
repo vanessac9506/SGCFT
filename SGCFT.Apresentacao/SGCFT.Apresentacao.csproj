@@ -303,7 +303,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Treinamento\Novo.cshtml" />
-    <Content Include="Views\Modulo\Index.cshtml" />
     <Content Include="Views\Pergunta\Index.cshtml" />
     <Content Include="Views\Alternativa\Index.cshtml" />
     <Content Include="Views\Video\Index.cshtml" />
@@ -318,6 +317,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Usuario\Login.cshtml" />
     <Content Include="Views\Treinamento\Index.cshtml" />
+    <Content Include="Views\Modulo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

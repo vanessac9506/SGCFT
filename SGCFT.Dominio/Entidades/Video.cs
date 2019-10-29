@@ -39,7 +39,7 @@ namespace SGCFT.Dominio.Entidades
             if(string.IsNullOrEmpty(this.Titulo) || string.IsNullOrWhiteSpace(this.Titulo))
                 retorno.AdicionarErro("Título inválido!");
 
-            if(string.IsNullOrEmpty(this.Url) || string.IsNullOrWhiteSpace(this.Url))
+            if(this.VideoConteudo == null && (string.IsNullOrEmpty(this.Url) || string.IsNullOrWhiteSpace(this.Url)))
                 retorno.AdicionarErro("Url inválida!");
 
             return retorno;

@@ -17,12 +17,14 @@ namespace SGCFT.Apresentacao.Controllers
     public class ModuloController: BaseController
     {
         private readonly IModuloServico _servicoModulos;
-        private readonly ITreinamentoRepositorio _treinamentoRepositorio; 
+        private readonly ITreinamentoRepositorio _treinamentoRepositorio;
+        private readonly IModuloRepositorio _moduloRepositorio;
 
         public ModuloController()
         {
             _servicoModulos = new ModuloServico(new ModuloRepositorio());
             _treinamentoRepositorio = new TreinamentoRepositorio();
+            _moduloRepositorio = new ModuloRepositorio();
         }
 
         public ActionResult Index()
@@ -31,6 +33,14 @@ namespace SGCFT.Apresentacao.Controllers
             var treinamentos = _treinamentoRepositorio.selecionarTreinamentosPorUsuario(1);
             moduloViewModel.ListaTreinamentos = treinamentos.Select(x => new TreinamentoViewModel(x)).ToList();
             return View(moduloViewModel);
+        }
+
+        [HttpGet]
+        [Route("Modulo/GetDropDown/{idTreinamento}")]
+        public JsonResult GetDropDown(int idTreinamento)
+        {
+            var lista = _moduloRepositorio.SelecionarPorIdTreinamento(idTreinamento);
+            return Json(lista, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

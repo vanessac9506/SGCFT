@@ -1,9 +1,5 @@
 ﻿using SGCFT.Dominio.Entidades;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SGCFT.Dominio.Contratos.Repositorios
 {
@@ -11,5 +7,6 @@ namespace SGCFT.Dominio.Contratos.Repositorios
     {
         void Inserir(Modulo modulo);
         void Alterar(Modulo modulo);
+        List<Modulo> SelecionarPorIdTreinamento(int idTreinamento);
     }
 }
