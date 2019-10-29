@@ -12,9 +12,10 @@
                 <div class="card border-0">
                     <div class="card-header">
                         <h3 class="text-center"><i class="fas fa-video-camera"></i> Treinamento @Model.NomeTreinamento</h3>
+                        <h2 class="text-center">Modulo @Model.NomeModulo</h2>
                     </div>
                     <div class="card-body">
-
+                        <p>Video @Model.TituloVideo</p>
                         <video width="400" controls>
                             <source src="@Url.Action("ExibirConteudo", "Video", new { titulo = Model.TituloVideo, id = Model.Id })" type="video/mp4">
                             <source src="mov_bbb.ogg" type="video/ogg">

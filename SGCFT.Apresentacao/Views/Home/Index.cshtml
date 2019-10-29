@@ -7,7 +7,7 @@
 <section class="section section-md bg-gray-100 text-center">
     <div class="container">
         <div class="badge wow fadeIn">Treinamentos</div>
-        <h3 class="wow fadeIn">Algumas sugestões para você</h3>
+        <h3 class="wow fadeIn">Alguns exemplos</h3>
         <div class="row row-30 row-xl-60">
             @if (Model.ListaPrincipaisVideos == null || !Model.ListaPrincipaisVideos.Any())
             {
@@ -37,8 +37,9 @@
                                 <div class="box-modern-circle box-modern-circle-1"></div>
                             </div>
                             <p class="box-modern-title">Treinamento @item.NomeTreinamento</p>
+                            <p class="box-modern-text">Modulo @item.NomeModulo</p>
                             <div class="box-modern-text">
-                                @Html.ActionLink(item.TituloVideo, "Exibicao", "Video", new { modulo = item.NomeModulo, idModulo = item.IdModulo }, new { @class="link" })
+                                @Html.ActionLink(item.TituloVideo, "Exibicao", "Video", new { modulo = item.NomeModulo, idModulo = item.IdModulo }, new { @class = "link" })
                             </div>
                         </article>
                     </div>
@@ -126,7 +127,7 @@
                 </figure>
                 <div class="profile-modern-main">
                     <div class="profile-modern-main-item profile-modern-main-item_primary">
-                        <h4 class="profile-modern-name">Michael Logan</h4>
+                        <h4 class="profile-modern-name">Vanessa Cristina</h4>
                         <p class="profile-modern-position">Managing Director</p>
                     </div>
                     <div class="profile-modern-main-item profile-modern-main-item_secondary">
@@ -147,7 +148,7 @@
                 </figure>
                 <div class="profile-modern-main">
                     <div class="profile-modern-main-item profile-modern-main-item_primary">
-                        <h4 class="profile-modern-name">Jane Williams</h4>
+                        <h4 class="profile-modern-name">Amanda Mendonça</h4>
                         <p class="profile-modern-position">Executive Consultant</p>
                     </div>
                     <div class="profile-modern-main-item profile-modern-main-item_secondary">
