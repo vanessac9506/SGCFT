@@ -32,7 +32,7 @@ namespace SGCFT.Apresentacao.Models
         [Range(1, int.MaxValue, ErrorMessage = "Selecione um tipo correto")]
         public EnumTipoTreinamento TipoTreinamento { get; set; }
         public string Senha { get; set; }
-
+        public List<string> Modulos { get; set; }
         public Treinamento ConverterParaDominio()
         {
             Treinamento treinamento = new Treinamento(this.Tema, this.IdAutor, this.TipoTreinamento, this.Senha);
