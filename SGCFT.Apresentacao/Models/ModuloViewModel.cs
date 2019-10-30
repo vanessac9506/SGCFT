@@ -9,6 +9,17 @@ namespace SGCFT.Apresentacao.Models
 {
     public class ModuloViewModel
     {
+        public ModuloViewModel()
+        {
+
+        }
+
+        public ModuloViewModel(int id, string titulo)
+        {
+            this.Id = id;
+            this.Titulo = titulo;
+        }
+
         public int Id { get; set; }
         public int IdTreinamento { get; set; }
         [Required(ErrorMessage = "Informe o título")]

@@ -10,6 +10,17 @@ namespace SGCFT.Apresentacao.Models
 {
     public class VideoViewModel
     {
+        public VideoViewModel()
+        {
+
+        }
+
+        public VideoViewModel(int id, string titulo)
+        {
+            this.Id = id;
+            this.Titulo = titulo;
+        }
+
         public int Id { get; set; }
         public int IdModulo { get; set; }
         [Required(ErrorMessage = "Informe o título")]

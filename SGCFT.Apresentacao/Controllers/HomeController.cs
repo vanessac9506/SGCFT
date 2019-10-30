@@ -1,7 +1,6 @@
 ﻿using SGCFT.Apresentacao.Models;
 using SGCFT.Dados.Repositorios;
 using SGCFT.Dominio.Contratos.Repositorios;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -9,19 +8,19 @@ namespace SGCFT.Apresentacao.Controllers
 {
     public class HomeController : BaseController
     {
-        private readonly IVideoRepositorio _videoRepositorio;
+        private readonly ITreinamentoRepositorio _treinamentoRepositorio;
         public HomeController()
         {
-            _videoRepositorio = new VideoRepositorio();
+            _treinamentoRepositorio = new TreinamentoRepositorio();
         }
 
         public ActionResult Index()
         {
             HomeViewModel homeViewModel = new HomeViewModel();
-            var videos = _videoRepositorio.SelecionarVideosParaExibicao();
+            var treinamentos = _treinamentoRepositorio.SelecionarPrincipaisVideos();
 
-            if (videos != null)
-                homeViewModel.ListaPrincipaisVideos = videos.Select(x => new VideoExibicaoViewModel(x.Id, x.Modulo.Treinamento.Tema, x.Modulo.Titulo, x.Titulo, x.IdModulo)).ToList();
+            if (treinamentos != null)
+                homeViewModel.ListaPrincipaisTreinamentos = treinamentos.Select(x => new TreinamentoExibicaoViewModel(x.Id, x.Tema, x.Autor.Nome)).ToList();
 
             return View(homeViewModel);
         }

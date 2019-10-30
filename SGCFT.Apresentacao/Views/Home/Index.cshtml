@@ -9,7 +9,7 @@
         <div class="badge wow fadeIn">Treinamentos</div>
         <h3 class="wow fadeIn">Alguns exemplos</h3>
         <div class="row row-30 row-xl-60">
-            @if (Model.ListaPrincipaisVideos == null || !Model.ListaPrincipaisVideos.Any())
+            @if (Model.ListaPrincipaisTreinamentos == null || !Model.ListaPrincipaisTreinamentos.Any())
             {
                 <div class="col-sm-6 col-lg-4">
                     <!-- Box Modern-->
@@ -27,7 +27,7 @@
             }
             else
             {
-                foreach (var item in Model.ListaPrincipaisVideos)
+                foreach (var item in Model.ListaPrincipaisTreinamentos)
                 {
                     <div class="col-sm-6 col-lg-4">
                         <!-- Box Modern-->
@@ -36,11 +36,11 @@
                                 <div class="box-modern-icon mdi mdi-video"></div>
                                 <div class="box-modern-circle box-modern-circle-1"></div>
                             </div>
-                            <p class="box-modern-title">Treinamento @item.NomeTreinamento</p>
-                            <p class="box-modern-text">Modulo @item.NomeModulo</p>
-                            <div class="box-modern-text">
-                                @Html.ActionLink(item.TituloVideo, "Exibicao", "Video", new { modulo = item.NomeModulo, idModulo = item.IdModulo }, new { @class = "link" })
-                            </div>
+                            <p class="box-modern-title">
+                                <a href="@Url.Action("Exibicao", "Treinamento", new { tema = item.Tema, id = item.Id })">@item.Tema</a>
+                            </p>
+                            <p class="box-modern-text">@item.NomeAutor</p>
+                            <div class="box-modern-text">@item.Duracao</div>
                         </article>
                     </div>
                 }

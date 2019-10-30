@@ -1,0 +1,63 @@
+﻿@model SGCFT.Apresentacao.Models.ModuloExibicaoViewModel
+@{
+    ViewBag.Title = $"Módulo: {Model.Titulo}";
+}
+
+@section scripts {
+    <script type="text/javascript">
+        var link = '@Url.Action("ExibirConteudo", "Video", new { titulo = "titulo", id = "identificador" })';
+
+        $(document).ready(function () {
+            $("#loading").remove();
+            $(".page").removeClass("page");
+        });
+
+        function trocarvideo(titulo, id) {
+            var novoLink = link;
+            novoLink = novoLink.replace("titulo", titulo);
+            novoLink = novoLink.replace("identificador", id);
+            $(".list-group-item").removeClass("active");
+            $("#video-" + id).addClass("active");
+            $("#videosModulo").html('<source src="' + novoLink + '" type="video/mp4"><source src="mov_bbb.ogg" type="video/ogg">Your browser does not support HTML5 video.');
+            $("#videosModulo")[0].load();
+            $("#videosModulo")[0].play();
+        }
+    </script>
+}
+
+<section class="section section-xl bg-accent">
+    <div class="container">
+        <div class="row row-50 justify-content-center flex-lg-row-reverse align-items-center justify-content-lg-between">
+            <div class="col-sm-10 col-lg-5 wow fadeInRightSmall">
+                <div class="container">
+                    <h3 class="text-center">@Model.Titulo</h3>
+                    <div class="list-group">
+                        @for (int i = 0; i < Model.Videos.Count; i++)
+                        {
+                            if (i == 0)
+                            {
+                                <a id="video-@Model.Videos[i].Id" href="#" class="list-group-item list-group-item-action active" onclick="trocarvideo('@Model.Videos[i].Titulo', '@Model.Videos[i].Id');">
+                                    @Model.Videos[i].Titulo
+                                </a>
+                            }
+                            else
+                            {
+                                <a id="video-@Model.Videos[i].Id" href="#" class="list-group-item list-group-item-action" onclick="trocarvideo('@Model.Videos[i].Titulo', '@Model.Videos[i].Id');">
+                                    @Model.Videos[i].Titulo
+                                </a>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-10 col-lg-6 wow fadeInLeftSmall">
+                <h3 class="text-center">@Model.Videos.First().Titulo</h3>
+                <video width="570" height="400" controls id="videosModulo">
+                    <source src="@Url.Action("ExibirConteudo", "Video", new { titulo = Model.Videos.First().Titulo, id = Model.Videos.First().Id })" type="video/mp4">
+                    <source src="mov_bbb.ogg" type="video/ogg">
+                    Your browser does not support HTML5 video.
+                </video>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,37 @@
+﻿@model SGCFT.Apresentacao.Models.TreinamentoExibicaoViewModel
+@{
+    ViewBag.Title = $"Treinamento: {Model.Tema}";
+}
+
+<section class="section section-xl bg-accent">
+    <div class="container">
+        <div class="row row-50 justify-content-center flex-lg-row-reverse align-items-center justify-content-lg-between">
+            <div class="col-sm-10 col-lg-5 wow fadeInRightSmall">
+                <div class="badge">Autor: @Model.NomeAutor</div>
+                <h3>Tema: @Model.Tema</h3>
+                <p class="big inset-2">@Model.DescricaoTreinamento</p>
+            </div>
+            <div class="col-sm-10 col-lg-6 wow fadeInLeftSmall">
+                <div class="thumbnail-classy">
+                    <div class="thumbnail-classy-image bg-image"></div>
+                    <div class="thumbnail-classy-caption">
+                        <a class="thumbnail-classy-button mdi mdi-play" href="@Url.Action("Exibicao", "Modulo", new { titulo = Model.TituloModuloInicial, id = Model.IdModuloInicial })" data-lightgallery="item">
+                            <svg class="thumbnail-classy-button-shape" width="86" height="86" viewbox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+                                <rect x="1" y="1" width="86" height="86" rx="6" ry="6"></rect>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Módulos</h3>
+            </div>
+            @foreach (var item in Model.Modulos)
+            {
+                <a class="col-md-2 button button-primary button-shadow button-winona font-weight-sbold btn-space" href="@Url.Action("Exibicao", "Modulo", new { titulo = item.Titulo, id = item.Id })">@item.Titulo</a>
+            }
+        </div>
+    </div>
+</section>

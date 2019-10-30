@@ -105,5 +105,9 @@ namespace SGCFT.Dominio.Teste
             return this.resultadoEsperadoEmailCadastrado;
         }
 
+        public int ObterIdUsuarioPorEmail(string email)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

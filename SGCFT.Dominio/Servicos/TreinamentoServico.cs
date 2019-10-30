@@ -33,7 +33,11 @@ namespace SGCFT.Dominio.Servicos
             if (retorno.Sucesso)
             {
                 if(retorno.Sucesso)
+                {
+                    treinamento.DataAtualizacao = DateTime.Now;
                     _treinamentoRepositorio.Inserir(treinamento);
+                }
+                    
             }
             return retorno;
         }
@@ -48,7 +52,10 @@ namespace SGCFT.Dominio.Servicos
             }
             retorno = treinamento.ValidarDominio();
             if (retorno.Sucesso)
+            {
+                treinamento.DataAtualizacao = DateTime.Now;
                 _treinamentoRepositorio.Alterar(treinamento);
+            }
 
             return retorno;
         }

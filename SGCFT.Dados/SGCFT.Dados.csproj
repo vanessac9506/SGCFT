@@ -94,6 +94,10 @@
     <Compile Include="Migrations\201910131903453_07_TornandoCampoCertoErradoObrigatorio.Designer.cs">
       <DependentUpon>201910131903453_07_TornandoCampoCertoErradoObrigatorio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910300113415_08_Adicionado_Campos_Treinamento.cs" />
+    <Compile Include="Migrations\201910300113415_08_Adicionado_Campos_Treinamento.Designer.cs">
+      <DependentUpon>201910300113415_08_Adicionado_Campos_Treinamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\AcessoRepositorio.cs" />
@@ -144,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910131903453_07_TornandoCampoCertoErradoObrigatorio.resx">
       <DependentUpon>201910131903453_07_TornandoCampoCertoErradoObrigatorio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910300113415_08_Adicionado_Campos_Treinamento.resx">
+      <DependentUpon>201910300113415_08_Adicionado_Campos_Treinamento.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

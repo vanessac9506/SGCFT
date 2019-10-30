@@ -59,7 +59,7 @@ namespace SGCFT.Apresentacao.Controllers
         {
             var video = _videoRepositorio.ObterVideoPorIdModulo(idModulo);
 
-            var retorno = new VideoExibicaoViewModel(video.Id, video.Modulo.Treinamento.Tema, video.Modulo.Titulo, video.Titulo, video.IdModulo);
+            object retorno = null;// new TreinamentoExibicaoViewModel(video.Id, video.Modulo.Treinamento.Tema, video.Modulo.Titulo, video.Titulo, video.IdModulo);
 
             return View(retorno);
         }

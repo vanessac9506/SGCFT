@@ -26,15 +26,7 @@ namespace SGCFT.Apresentacao.Controllers
             _treinamentoRepositorio = new TreinamentoRepositorio();
             _moduloRepositorio = new ModuloRepositorio();
         }
-
-        public ActionResult Index()
-        {
-            ModuloViewModel moduloViewModel = new ModuloViewModel();
-            var treinamentos = _treinamentoRepositorio.selecionarTreinamentosPorUsuario(1);
-            moduloViewModel.ListaTreinamentos = treinamentos.Select(x => new TreinamentoViewModel(x)).ToList();
-            return View(moduloViewModel);
-        }
-
+        
         [HttpGet]
         [Route("Modulo/GetDropDown/{idTreinamento}")]
         public JsonResult GetDropDown(int idTreinamento)
@@ -43,21 +35,12 @@ namespace SGCFT.Apresentacao.Controllers
             return Json(lista, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost]
-        public ActionResult Index(ModuloViewModel moduloViewModel)
+        [Route("Modulo/{titulo}/{id}")]
+        public ActionResult Exibicao(string titulo, int id)
         {
-            if (ModelState.IsValid)
-            {
-                Modulo modulo = moduloViewModel.ConverterParaDominio();
-                Retorno retorno = _servicoModulos.InserirModulo(modulo);
-                ViewBag.Sucesso = retorno.Sucesso;
-                ViewBag.Mensagens = retorno.Mensagens;
-            }
-
-            var treinamentos = _treinamentoRepositorio.selecionarTreinamentosPorUsuario(1);
-            moduloViewModel.ListaTreinamentos = treinamentos.Select(x => new TreinamentoViewModel(x)).ToList();
-
-            return View(moduloViewModel);
+            var modulo = _moduloRepositorio.ObterModuloPorId(id);
+            var exibicao = new ModuloExibicaoViewModel(modulo.Id, modulo.Titulo, modulo.Videos);
+            return View(exibicao);
         }
     }
 }

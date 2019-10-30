@@ -29,7 +29,8 @@ namespace SGCFT.Dominio.Entidades
         public List<Modulo> Modulos { get; set; }
         public EnumTipoTreinamento TipoTreinamento { get; set; }
         public string Senha { get; set; }
-
+        public DateTime DataAtualizacao { get; set; }
+        public string Duracao { get; set; }
         public Treinamento AdicionarModulo(string modulo)
         {
             if (this.Modulos == null)

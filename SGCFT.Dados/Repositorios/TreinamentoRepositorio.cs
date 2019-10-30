@@ -1,11 +1,9 @@
 ﻿using SGCFT.Dados.Contextos;
 using SGCFT.Dominio.Contratos.Repositorios;
 using SGCFT.Dominio.Entidades;
-using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SGCFT.Dados.Repositorios
 {
@@ -21,7 +19,7 @@ namespace SGCFT.Dados.Repositorios
 
         public void Alterar(Treinamento treinamento)
         {
-            _contexto.Entry<Treinamento>(treinamento).State = System.Data.Entity.EntityState.Modified;
+            _contexto.Entry<Treinamento>(treinamento).State = EntityState.Modified;
             _contexto.SaveChanges();
         }
 
@@ -41,6 +39,19 @@ namespace SGCFT.Dados.Repositorios
             return _contexto.Treinamento.SingleOrDefault(x => x.Id == id);
         }
 
+        public List<Treinamento> SelecionarPrincipaisVideos()
+        {
+            var query = _contexto.Treinamento.Where(x => x.Modulos.Count > 0).AsQueryable().Include(x => x.Autor);
+            var lista = query.OrderBy(x => x.Id).Skip(0).Take(3).ToList();
+            return lista;
+        }
+
+        public Treinamento ObterParaExibicao(int id)
+        {
+            var query = _contexto.Treinamento.Where(x => x.Id == id).AsQueryable().Include(x => x.Modulos).Include(x => x.Autor);
+            var treinamento = query.SingleOrDefault();
+            return treinamento;
+        }
 
         public void Dispose()
         {

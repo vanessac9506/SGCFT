@@ -2,6 +2,7 @@
 using SGCFT.Dominio.Contratos.Repositorios;
 using SGCFT.Dominio.Entidades;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace SGCFT.Dados.Repositorios
@@ -31,6 +32,12 @@ namespace SGCFT.Dados.Repositorios
         {
             var query = _contexto.Modulo.Where(x => x.IdTreinamento == idTreinamento);
             return query.ToList();
+        }
+
+        public Modulo ObterModuloPorId(int id)
+        {
+            var query = _contexto.Modulo.Where(x => x.Id == id).AsQueryable().Include(x => x.Videos);
+            return query.SingleOrDefault();
         }
 
         public void Dispose()

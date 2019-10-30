@@ -52,5 +52,13 @@ namespace SGCFT.Apresentacao.Controllers
             return View(treinamentoViewModel);
         }
 
+        [HttpGet]
+        [Route("Treinamento/{tema}/{id}")]
+        public ActionResult Exibicao(string tema, int id)
+        {
+            var treinamento = _repositorioTreinamentos.ObterParaExibicao(id);
+            var exibicao = new TreinamentoExibicaoViewModel(treinamento.Id, treinamento.Tema, "", treinamento.Duracao, treinamento.Autor.Nome, treinamento.Modulos);
+            return View(exibicao);
+        }
     }
 }
