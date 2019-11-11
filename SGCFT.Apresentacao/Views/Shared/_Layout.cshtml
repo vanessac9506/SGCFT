@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CMuli:100,300,400,600,800">
     <link type="text/css" href="~/Content/fonts.css" rel="stylesheet" />
     <link type="text/css" href="~/Content/style.css" rel="stylesheet" />
+    @RenderSection("styles", required: false)
     <style>
         .ie-panel {
             display: none;
@@ -62,7 +63,6 @@
                                 {
                                     <li class="rd-nav-item">@Html.ActionLink("Cadastrar treinamento", "Novo", "Treinamento", null, new { @class = "rd-nav-link" })</li>
                                     <li class="rd-nav-item">@Html.ActionLink("Cadastrar pergunta", "Index", "Pergunta", null, new { @class = "rd-nav-link" })</li>
-                                    <li class="rd-nav-item">@Html.ActionLink("Cadastrar alternativa", "Index", "Alternativa", null, new { @class = "rd-nav-link" })</li>
                                     <li class="rd-nav-item">@Html.ActionLink("Cadastrar video", "Index", "Video", null, new { @class = "rd-nav-link" })</li>
                                 }
                             </ul>

@@ -1,9 +1,5 @@
 ﻿using SGCFT.Dominio.Entidades;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace SGCFT.Apresentacao.Models
 {
@@ -14,6 +10,9 @@ namespace SGCFT.Apresentacao.Models
         public string Texto { get; set; }
         public int IdAutor { get; set; }
         public Usuario Autor { get; set; }
+
+        public string[] Alternativas { get; set; }
+        public bool[] Corretos { get; set; }
 
         public Pergunta ConverterParaDominio()
         {

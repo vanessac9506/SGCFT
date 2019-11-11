@@ -38,5 +38,16 @@ namespace SGCFT.Dominio.Entidades
 
             return retorno;
         }
+
+        public Pergunta AdicionarAlternativa(string alternativa, bool correto)
+        {
+            if (this.Alternativas == null)
+                this.Alternativas = new List<Alternativa>();
+
+            Alternativa alternativaAdicionar = new Alternativa(this.Id, alternativa, correto);
+            this.Alternativas.Add(alternativaAdicionar);
+
+            return this;
+        }
     }
 }

@@ -30,15 +30,22 @@ namespace SGCFT.Apresentacao.Controllers
         [HttpPost]
         public ActionResult Index(PerguntaViewModel perguntaViewModel)
         {
+            Retorno retorno = null;
             if (ModelState.IsValid)
             {
                 Pergunta pergunta = perguntaViewModel.ConverterParaDominio();
                 pergunta.IdAutor = base.IdUsuarioAutenticado;
-                Retorno retorno = _servicoPerguntas.InserirPergunta(pergunta);
+
+                for (int i = 0; i < perguntaViewModel.Alternativas.Length; i++)
+                {
+                    pergunta.AdicionarAlternativa(perguntaViewModel.Alternativas[i], perguntaViewModel.Corretos[i]);
+                }
+
+                retorno = _servicoPerguntas.InserirPergunta(pergunta);
                 ViewBag.Sucesso = retorno.Sucesso;
                 ViewBag.Mensagens = retorno.Mensagens;
             }
-            return View();
+            return Json(retorno);
         }
 
 

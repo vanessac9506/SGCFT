@@ -3,50 +3,139 @@
     ViewBag.Title = "Cadastro de perguntas";
 }
 
+@section styles
+{
+    <link type="text/css" href="~/Content/bootstrap-switch.min.css" rel="stylesheet" />
+    <link type="text/css" href="~/Content/bootstrap-switch.custom.css" rel="stylesheet" />
+}
+
 @section scripts
 {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/unobtrusive")
+
+    <script src="~/Scripts/bootstrap-switch.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/bootstrap-switch.custom.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#btnAdicionarAlternativa").click(function () {
+                if ($("#txtAdicionarAlternativa").val() != "") {
+                    var conteudo = document.getElementById("template-alternativa").innerHTML;
+                    conteudo = conteudo.replace("{{Alternativa}}", $("#txtAdicionarAlternativa").val());
+                    conteudo = conteudo.replace("{{idAlternativa}}", 0);
+                    conteudo = conteudo.replace("{{Correto}}", $("#chkvalor").prop('checked'));
+                    conteudo = conteudo.replace("{{Valor}}", $("#chkvalor").prop('checked') ? 'Sim' : 'Não');
+                    $("#tabelaAlternativa").find("tbody").append(conteudo);
+                    $("#txtAdicionarAlternativa").val("");
+                    $("#txtAdicionarAlternativa").focus();
+                }
+            });
+        });
+
+        function removerLinhaAlternativa(botao) {
+            var linha = $(botao).parents("tr");
+            linha.hide('slow', function () { linha.remove(); });
+        }
+
+        function sucesso(data) {
+            if (data.Sucesso) {
+                $("#mensagemSucesso").show('slow');
+            } else {
+                $(data.Mensagens).each(function () {
+                    $("#mensagemFalha").html("");
+                    var mensagem = this + "<br />";
+                    $("#mensagemFalha").append(mensagem);
+                });
+                $("#mensagemFalha").show('slow');
+            }
+        }
+
+        function falha(data) {
+            $("#mensagemFalha").html("Erro ao cadastrar a pergunta");
+            $("#mensagemFalha").show('slow');
+        }
+
+    </script>
+
 }
 
 <section class="section section-md bg-gray-100">
     <div class="container">
-        @if (ViewBag.Sucesso != null)
-        {
-            if ((bool)ViewBag.Sucesso)
-            {
-                <div class="alert alert-success" role="alert">Pergunta cadastrada com sucesso</div>
-            }
-            else
-            {
-                <div class="alert alert-danger" role="alert">
-                    @foreach (string mensagem in ViewBag.Mensagens as List<string>)
-                    {
-                        @mensagem
-                        <br />
-                    }
-                </div>
-            }
-        }
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card border-0">
+                    <div class="card-header">
+                        <h3 class="text-center"><i class="fas fa-plus-circle"></i> Novo Cadastro de Perguntas</h3>
+                    </div>
+                    <div class="card-body">
 
-        <h3 class="text-center">Cadastro de Perguntas</h3>
+                        <div class="alert alert-success" style="display: none;" id="mensagemSucesso" role="alert">Pergunta cadastrada com sucesso.</div>
+                        <div class="alert alert-danger" style="display: none;" id="mensagemFalha" role="alert">
+                        </div>
 
-        @using (Html.BeginForm("Index", "Pergunta", FormMethod.Post, new { id = "formPergunta", @class = "rd-form" }))
-        {
-        <div class="row row-x-16 row-20">
-            <div class="col-md-6">
-                <div class="form-wrap">
-                    @Html.TextBoxFor(x => x.Texto, new { id = "txtTexto", @class = "form-input", autocomplete = "off" })
-                    <label class="form-label" for="txtTexto">Texto</label>
-                    <label class="warning">@Html.ValidationMessageFor(x => x.Texto)</label>
-                </div>
-            </div>
+                        @using (Ajax.BeginForm("Index", "Pergunta", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "sucesso", OnFailure = "falha" }, new { id = "formPergunta", @class = "rd-form" }))
+                        {
+                            <div class="form-row mt-2">
+                                <div class="form-group col-lg-12">
+                                    <label for="txtTexto">Texto</label>
+                                    @Html.TextBoxFor(x => x.Texto, new { id = "txtTexto", @class = "form-input col-md-12", autocomplete = "off" })
+                                    <span class="warning d-inline">@Html.ValidationMessageFor(x => x.Texto)</span>
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <h4 class="text-center">Informe abaixo as alternativas</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-sm" id="tabelaAlternativa" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        <input type="text" class="form-input" id="txtAdicionarAlternativa" placeholder="informe a alternativa" />
+                                                    </th>
+                                                    <th>
+                                                        <label for="Valor">Alternativa correta</label>
+                                                        <div class="w-100"></div>
+                                                        @Html.CheckBox("Valor", false, new { id = "chkvalor", @class = "bootstrap-switch", @type = "checkbox", @value = "false", @data_on_text = "Sim", @data_on_color = "success", @data_off_text = "Não", @data_off_color = "danger" })
+                                                    </th>
+                                                    <th>
+                                                        <button type="button" class="btn btn-sm btn-success" aria-label="Success" id="btnAdicionarAlternativa"><spam class="fas fa-plus-circle"></spam> Adicionar</button>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <a href="@Url.Action("Index")" class="btn btn-outline-secondary btn-sm" role="button" aria-label="Voltar para a página anterior" id="btnVoltar">
+                                        <i class="fas fa-undo"></i> Voltar
+                                    </a>
+                                    <button class="btn btn-sm btn-outline-success" type="submit" aria-label="Salvar" id="btnSalvar">
+                                        <i class="fas fa-check-circle"></i> Salvar
+                                    </button>
+                                </div>
 
-            <div class="col-md-12">
-                <div class="form-wrap form-button">
-                    <button class="button button-block button-primary" type="submit">Salvar</button>
+                                @Html.AntiForgeryToken()
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
         </div>
-        }
     </div>
+
+    <script type="text/template" id="template-alternativa">
+        <tr>
+            <td>
+                <input type="text" value="{{Alternativa}}" class="form-input" name="Alternativas" />
+            </td>
+            <td>
+                <input type="text" value="{{Valor}}" class="form-input" />
+                <input type="hidden" value="{{Correto}}" class="form-input" name="Corretos" />
+            </td>
+            <td>
+                <button id="{{idAlternativa}}" type="button" class="btn btn-sm btn-danger" style="height:100%;width:100px" aria-label="Danger" onclick="removerLinhaAlternativa(this);"><span class="fas fa-trash-alt"></span> Excluir</button>
+            </td>
+        </tr>
+    </script>
+
 </section>
