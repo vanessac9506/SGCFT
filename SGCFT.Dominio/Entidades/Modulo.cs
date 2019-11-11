@@ -25,7 +25,7 @@ namespace SGCFT.Dominio.Entidades
         public Treinamento Treinamento { get; set; }
         public string Titulo { get; set; }
         public List<Video> Videos { get; set; }
-
+        public List<Pergunta> Perguntas { get; set; }
         public Retorno ValidarDominio()
         {
             Retorno retorno = new Retorno();

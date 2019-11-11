@@ -38,7 +38,7 @@ namespace SGCFT.Apresentacao.Controllers
         [Route("Modulo/{titulo}/{id}")]
         public ActionResult Exibicao(string titulo, int id)
         {
-            var modulo = _moduloRepositorio.ObterModuloPorId(id);
+            var modulo = _moduloRepositorio.ObterModuloPorIdParaExibicao(id, base.IdUsuarioAutenticado);
             var exibicao = new ModuloExibicaoViewModel(modulo.Id, modulo.Titulo, modulo.Videos);
             return View(exibicao);
         }

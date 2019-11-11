@@ -8,6 +8,6 @@ namespace SGCFT.Dominio.Contratos.Repositorios
         void Inserir(Modulo modulo);
         void Alterar(Modulo modulo);
         List<Modulo> SelecionarPorIdTreinamento(int idTreinamento);
-        Modulo ObterModuloPorId(int id);
+        Modulo ObterModuloPorIdParaExibicao(int id, int idAutor);
     }
 }

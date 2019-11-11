@@ -10,7 +10,6 @@ namespace SGCFT.Dados.Repositorios
     public class ModuloRepositorio : IModuloRepositorio
     {
         private readonly Contexto _contexto;
-
         public ModuloRepositorio()
         {
             _contexto = new Contexto();
@@ -34,10 +33,12 @@ namespace SGCFT.Dados.Repositorios
             return query.ToList();
         }
 
-        public Modulo ObterModuloPorId(int id)
+        public Modulo ObterModuloPorIdParaExibicao(int id, int idAutor)
         {
             var query = _contexto.Modulo.Where(x => x.Id == id).AsQueryable().Include(x => x.Videos);
-            return query.SingleOrDefault();
+
+            var modulo = query.SingleOrDefault();
+            return modulo;
         }
 
         public void Dispose()

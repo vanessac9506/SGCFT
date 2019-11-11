@@ -30,7 +30,7 @@
             </div>
             @foreach (var item in Model.Modulos)
             {
-                <a class="col-md-2 button button-primary button-shadow button-winona font-weight-sbold btn-space" href="@Url.Action("Exibicao", "Modulo", new { titulo = item.Titulo, id = item.Id })">@item.Titulo</a>
+                <a class="col-md-2 button button-primary button-shadow button-winona font-weight-sbold btn-space" href="@Url.Action("Exibicao", "Modulo", new { titulo = item.Titulo.ToURLCustomizada(), id = item.Id })">@item.Titulo</a>
             }
         </div>
     </div>

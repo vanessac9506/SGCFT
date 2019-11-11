@@ -37,7 +37,7 @@
                                 <div class="box-modern-circle box-modern-circle-1"></div>
                             </div>
                             <p class="box-modern-title">
-                                <a href="@Url.Action("Exibicao", "Treinamento", new { tema = item.Tema, id = item.Id })">@item.Tema</a>
+                                <a href="@Url.Action("Exibicao", "Treinamento", new { tema = item.Tema.ToURLCustomizada(), id = item.Id })">@item.Tema</a>
                             </p>
                             <p class="box-modern-text">@item.NomeAutor</p>
                             <div class="box-modern-text">@item.Duracao</div>

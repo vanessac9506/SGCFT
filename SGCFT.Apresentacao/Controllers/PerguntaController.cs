@@ -1,13 +1,11 @@
 ﻿using SGCFT.Apresentacao.Models;
 using SGCFT.Dados.Repositorios;
+using SGCFT.Dominio.Contratos.Repositorios;
 using SGCFT.Dominio.Contratos.Servicos;
 using SGCFT.Dominio.Entidades;
 using SGCFT.Dominio.Servicos;
 using SGCFT.Utilitario;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SGCFT.Apresentacao.Controllers
@@ -16,10 +14,11 @@ namespace SGCFT.Apresentacao.Controllers
     public class PerguntaController: BaseController
     {
         private readonly IPerguntaServico _servicoPerguntas;
-
+        private readonly IPerguntaRepositorio _perguntaRepositorio;
         public PerguntaController()
         {
-            _servicoPerguntas = new PerguntaServico(new PerguntaRepositorio());
+            _perguntaRepositorio = new PerguntaRepositorio();
+            _servicoPerguntas = new PerguntaServico(_perguntaRepositorio);
         }
 
         public ActionResult Index()
@@ -48,6 +47,11 @@ namespace SGCFT.Apresentacao.Controllers
             return Json(retorno);
         }
 
-
+        public JsonResult ObterQuestionario(int idModulo)
+        {
+            var perguntas = _perguntaRepositorio.SelecionarPorIdUsuario(base.IdUsuarioAutenticado);
+            var questionarios = perguntas.Select(x => new QuestionarioViewModel(x)).ToList();
+            return Json(questionarios, JsonRequestBehavior.AllowGet);
+        }
     }
 }

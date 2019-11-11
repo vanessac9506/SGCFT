@@ -3,6 +3,7 @@ using SGCFT.Dominio.Contratos.Repositorios;
 using SGCFT.Dominio.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,11 @@ namespace SGCFT.Dados.Repositorios
         public PerguntaRepositorio()
         {
             _contexto = new Contexto();
+        }
+
+        public PerguntaRepositorio(Contexto contexto)
+        {
+            _contexto = contexto;
         }
 
         public void Alterar(Pergunta pergunta)
@@ -32,7 +38,7 @@ namespace SGCFT.Dados.Repositorios
 
         public List<Pergunta> SelecionarPorIdUsuario(int idUsuario)
         {
-            var query = _contexto.Pergunta.Where(x => x.IdAutor == idUsuario);
+            var query = _contexto.Pergunta.Where(x => x.IdAutor == idUsuario).Include(x => x.Alternativas);
             return query.ToList();
         }
 
