@@ -10,11 +10,11 @@ namespace SGCFT.Apresentacao.Models
         {
             this.IdPergunta = pergunta.Id;
             this.Pergunta = pergunta.Texto;
-            this.Alternativas = pergunta.Alternativas.Select(x => x.Texto).ToList();
+            this.Alternativas = pergunta.Alternativas.Select(x => new AlternativaViewModel(x.Id,x.Texto)).ToList();
         }
 
         public int IdPergunta { get; set; }
         public string Pergunta { get; set; }
-        public List<string> Alternativas { get; set; }
+        public List<AlternativaViewModel> Alternativas { get; set; }
     }
 }

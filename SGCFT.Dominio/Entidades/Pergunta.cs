@@ -14,16 +14,19 @@ namespace SGCFT.Dominio.Entidades
 
         }
 
-        public Pergunta(string texto, int idAutor)
+        public Pergunta(string texto, int idAutor, int idModulo)
         {
             this.Texto = texto;
             this.IdAutor = idAutor;
+            this.IdModulo = idModulo;
         }
 
         public int Id { get; set; }
         public string Texto { get; set; }
         public int IdAutor { get; set; }
         public Usuario Autor { get; set; }
+        public int IdModulo { get; set; }
+        public Modulo Modulo { get; set; }
         public List<Alternativa> Alternativas { get; set; }
 
         public Retorno ValidarDominio()

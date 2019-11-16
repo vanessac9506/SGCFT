@@ -9,6 +9,16 @@ namespace SGCFT.Apresentacao.Models
 {
     public class AlternativaViewModel
     {
+        public AlternativaViewModel()
+        {
+
+        }
+
+        public AlternativaViewModel(int id, string texto)
+        {
+            this.Id = id;
+            this.Texto = texto;
+        }
         public int Id { get; set; }
         public int IdPergunta { get; set; }
         public Pergunta Pergunta { get; set; }

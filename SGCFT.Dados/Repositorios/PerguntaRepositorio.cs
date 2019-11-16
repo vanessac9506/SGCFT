@@ -42,6 +42,13 @@ namespace SGCFT.Dados.Repositorios
             return query.ToList();
         }
 
+        public List<Pergunta> SelecionarPorIdModulo(int idModulo)
+        {
+            var query = _contexto.Pergunta.Where(x => x.IdModulo == idModulo).Include(x => x.Alternativas);
+            return query.ToList();
+        }
+
+
         public void Dispose()
         {
             if (_contexto != null)

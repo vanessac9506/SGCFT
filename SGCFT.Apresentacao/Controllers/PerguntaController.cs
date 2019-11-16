@@ -15,15 +15,19 @@ namespace SGCFT.Apresentacao.Controllers
     {
         private readonly IPerguntaServico _servicoPerguntas;
         private readonly IPerguntaRepositorio _perguntaRepositorio;
+        private readonly ITreinamentoRepositorio _treinamentoRepositorio;
         public PerguntaController()
         {
             _perguntaRepositorio = new PerguntaRepositorio();
             _servicoPerguntas = new PerguntaServico(_perguntaRepositorio);
+            _treinamentoRepositorio = new TreinamentoRepositorio();
         }
 
         public ActionResult Index()
         {
-            return View();
+            PerguntaViewModel perguntaViewModel = IniciarCadastro();
+            return View(perguntaViewModel);
+
         }
 
         [HttpPost]
@@ -49,9 +53,17 @@ namespace SGCFT.Apresentacao.Controllers
 
         public JsonResult ObterQuestionario(int idModulo)
         {
-            var perguntas = _perguntaRepositorio.SelecionarPorIdUsuario(base.IdUsuarioAutenticado);
+            var perguntas = _perguntaRepositorio.SelecionarPorIdModulo(idModulo);
             var questionarios = perguntas.Select(x => new QuestionarioViewModel(x)).ToList();
             return Json(questionarios, JsonRequestBehavior.AllowGet);
+        }
+
+        private PerguntaViewModel IniciarCadastro()
+        {
+            PerguntaViewModel perguntaViewModel = new PerguntaViewModel();
+            var treinamentos = _treinamentoRepositorio.selecionarTreinamentosPorUsuario(base.IdUsuarioAutenticado);
+            perguntaViewModel.Treinamentos = treinamentos.Select(x => new TreinamentoViewModel(x)).ToList();
+            return perguntaViewModel;
         }
     }
 }

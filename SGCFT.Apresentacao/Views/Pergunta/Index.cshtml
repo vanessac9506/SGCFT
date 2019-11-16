@@ -31,6 +31,25 @@
                     $("#txtAdicionarAlternativa").focus();
                 }
             });
+
+            $("#ddlTreinamentos").change(function () {
+                var urlModulos = '@Url.Action("GetDropDown", "Modulo", new { idTreinamento = "trocar" })';
+                urlModulos = urlModulos.replace("trocar", $("#ddlTreinamentos").val());
+                $.ajax({
+                    type: 'GET',
+                    url: urlModulos,
+                    cache: false,
+                    success: function (retorno) {
+                        $("#ddlModulos").html('<option value="">Selecione um módulo</option>');
+                        $(retorno).each(function () {
+                            $("#ddlModulos").append('<option value="' + this.Id + '">' + this.Titulo + '</option>');
+                        });
+                    },
+                    error: function (retorno) {
+                        $("#card-body-video").append('<div class="alert alert-danger" role="alert">Erro ao obter os módulos</div>');
+                    }
+                });
+            });
         });
 
         function removerLinhaAlternativa(botao) {
@@ -76,46 +95,55 @@
 
                         @using (Ajax.BeginForm("Index", "Pergunta", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "sucesso", OnFailure = "falha" }, new { id = "formPergunta", @class = "rd-form" }))
                         {
-                            <div class="form-row mt-2">
-                                <div class="form-group col-lg-12">
-                                    <label for="txtTexto">Texto</label>
-                                    @Html.TextBoxFor(x => x.Texto, new { id = "txtTexto", @class = "form-input col-md-12", autocomplete = "off" })
-                                    <span class="warning d-inline">@Html.ValidationMessageFor(x => x.Texto)</span>
-                                </div>
-                                <div class="form-group col-lg-12">
-                                    <h4 class="text-center">Informe abaixo as alternativas</h4>
-                                    <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-sm" id="tabelaAlternativa" cellspacing="0" width="100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>
-                                                        <input type="text" class="form-input" id="txtAdicionarAlternativa" placeholder="informe a alternativa" />
-                                                    </th>
-                                                    <th>
-                                                        <label for="Valor">Alternativa correta</label>
-                                                        <div class="w-100"></div>
-                                                        @Html.CheckBox("Valor", false, new { id = "chkvalor", @class = "bootstrap-switch", @type = "checkbox", @value = "false", @data_on_text = "Sim", @data_on_color = "success", @data_off_text = "Não", @data_off_color = "danger" })
-                                                    </th>
-                                                    <th>
-                                                        <button type="button" class="btn btn-sm btn-success" aria-label="Success" id="btnAdicionarAlternativa"><spam class="fas fa-plus-circle"></spam> Adicionar</button>
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody></tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="text-right">
-                                    <a href="@Url.Action("Index")" class="btn btn-outline-secondary btn-sm" role="button" aria-label="Voltar para a página anterior" id="btnVoltar">
-                                        <i class="fas fa-undo"></i> Voltar
-                                    </a>
-                                    <button class="btn btn-sm btn-outline-success" type="submit" aria-label="Salvar" id="btnSalvar">
-                                        <i class="fas fa-check-circle"></i> Salvar
-                                    </button>
-                                </div>
-
-                                @Html.AntiForgeryToken()
+                        <div class="form-row mt-2">
+                            <div class="form-group col-lg-4">
+                                <label for="ddlTreinamentos">Seus treinamentos</label>
+                                @Html.DropDownList("ListaTreinamentos", new SelectList(Model.Treinamentos, "Id", "Tema"), "Selecione um treinamento", new { id = "ddlTreinamentos", @class = "form-control form-select" })
                             </div>
+                            <div class="form-group col-lg-4">
+                                <label for="ddlModulos">Módulo</label>
+                                @Html.DropDownListFor(x => x.IdModulo, Enumerable.Empty<SelectListItem>(), "Selecione um módulo", new { id = "ddlModulos", @class = "form-control form-select" })
+                                <span class="warning d-inline">@Html.ValidationMessageFor(x => x.IdModulo)</span>
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <label for="txtTexto">Texto</label>
+                                @Html.TextBoxFor(x => x.Texto, new { id = "txtTexto", @class = "form-input col-md-12", autocomplete = "off" })
+                                <span class="warning d-inline">@Html.ValidationMessageFor(x => x.Texto)</span>
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <h4 class="text-center">Informe abaixo as alternativas</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-sm" id="tabelaAlternativa" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <input type="text" class="form-input" id="txtAdicionarAlternativa" placeholder="informe a alternativa" />
+                                                </th>
+                                                <th>
+                                                    <label for="Valor">Alternativa correta</label>
+                                                    <div class="w-100"></div>
+                                                    @Html.CheckBox("Valor", false, new { id = "chkvalor", @class = "bootstrap-switch", @type = "checkbox", @value = "false", @data_on_text = "Sim", @data_on_color = "success", @data_off_text = "Não", @data_off_color = "danger" })
+                                                </th>
+                                                <th>
+                                                    <button type="button" class="btn btn-sm btn-success" aria-label="Success" id="btnAdicionarAlternativa"><spam class="fas fa-plus-circle"></spam> Adicionar</button>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <a href="@Url.Action("Index")" class="btn btn-outline-secondary btn-sm" role="button" aria-label="Voltar para a página anterior" id="btnVoltar">
+                                    <i class="fas fa-undo"></i> Voltar
+                                </a>
+                                <button class="btn btn-sm btn-outline-success" type="submit" aria-label="Salvar" id="btnSalvar">
+                                    <i class="fas fa-check-circle"></i> Salvar
+                                </button>
+                            </div>
+
+                            @Html.AntiForgeryToken()
+                        </div>
                         }
                     </div>
                 </div>

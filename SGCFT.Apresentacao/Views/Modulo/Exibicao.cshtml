@@ -32,6 +32,21 @@
                     cache: false,
                     success: function (retorno) {
                         questionarios = retorno;
+                        $("#conteudo-modal").html("");
+                        for (var i = 0; i < retorno.length; i++) {
+                            var template = document.getElementById('template-questionario').innerHTML;
+                            template = template.replace('{{Pergunta}}', retorno[i].Pergunta);
+                            var alternativas = "";
+                            for (var j = 0; j < retorno[i].Alternativas.length; j++) {
+                                var templateAlternativa = document.getElementById('template-alternativa').innerHTML;
+                                templateAlternativa = templateAlternativa.replace("{{Indice}}", i);
+                                templateAlternativa = templateAlternativa.replace("{{Id}}", retorno[i].Alternativas[j].Id);
+                                templateAlternativa = templateAlternativa.replace("{{Alternativa}}", retorno[i].Alternativas[j].Texto);
+                                alternativas = alternativas + templateAlternativa;
+                            }
+                            template = template.replace('{{Alternativas}}', alternativas);
+                            $("#conteudo-modal").append(template);
+                        }
                         $("#modal-questionario").modal('toggle');
                     },
                     error: function (retorno) {
@@ -88,10 +103,10 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                Questionário do módulo: @Model.Titulo
+                <h4 class="col-12 modal-title text-center">Questionário do módulo: @Model.Titulo</h4>
             </div>
-            <div class="modal-body text-center">
-                <p>Pergunta:</p>
+            <div class="modal-body" id="conteudo-modal">
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-sm btn-outline-secondary" data-dismiss="modal" aria-label="Cancelar operação" id="btnFecharModalTipoPublicacao">
@@ -104,3 +119,29 @@
         </div>
     </div>
 </div>
+
+<script type="text/template" id="template-questionario">
+    <div class="form-row" style="margin-bottom: 15px;">
+        <div class="col-8 offset-2" style="border-bottom:1px solid silver; padding-bottom: 10px;">
+            <h4 class="text-center" style="font-weight:bold;">
+                {{Pergunta}}
+            </h4>
+            <div class="form-group">
+                {{Alternativas}}
+            </div>
+            
+        </div>
+    </div>
+</script>
+
+<script type="text/template" id="template-alternativa">
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <div class="input-group-text">
+                <input type="radio" name="OpcaoEscolhida[{{Indice}}]" value="{{Id}}" aria-label="Alternativa">
+            </div>
+        </div>
+        <span style="border: 1px solid #e9ecef;padding: 5px;border-radius: 0.25rem;width: 90%;">{{Alternativa}}</span>
+    </div>
+    <br />
+</script>
