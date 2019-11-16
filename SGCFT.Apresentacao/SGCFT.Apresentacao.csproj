@@ -201,6 +201,7 @@
     <Compile Include="Models\ModuloViewModel.cs" />
     <Compile Include="Models\PerguntaViewModel.cs" />
     <Compile Include="Models\QuestionarioViewModel.cs" />
+    <Compile Include="Models\RespostaViewModel.cs" />
     <Compile Include="Models\TreinamentoExibicaoViewModel.cs" />
     <Compile Include="Models\TreinamentoViewModel.cs" />
     <Compile Include="Models\UsuarioViewModel.cs" />

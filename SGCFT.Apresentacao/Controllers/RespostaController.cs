@@ -3,6 +3,7 @@ using SGCFT.Dados.Repositorios;
 using SGCFT.Dominio.Contratos.Servicos;
 using SGCFT.Dominio.Entidades;
 using SGCFT.Dominio.Servicos;
+using SGCFT.Utilitario;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +21,17 @@ namespace SGCFT.Apresentacao.Controllers
             _servicoRespostas = new RespostaServico(new RespostaRepositorio());
         }
 
-        public ActionResult Index()
+        [HttpPost]
+        public ActionResult EnvioAlternativa(RespostaViewModel respostaViewModel)
         {
-            return View();
+            var respostas = respostaViewModel.ConverterParaRespostas(base.IdUsuarioAutenticado);
+            var retornosRespostas = new List<Retorno>();
+            foreach (var resposta in respostas)
+            {
+                var retorno = _servicoRespostas.InserirResposta(resposta);
+                retornosRespostas.Add(retorno);
+            }
+            return Json(retornosRespostas);
         }
-
     }
 }

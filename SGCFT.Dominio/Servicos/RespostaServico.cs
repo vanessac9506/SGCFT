@@ -18,7 +18,7 @@ namespace SGCFT.Dominio.Servicos
             this._respostaRepositorio = respostaRepositorio;
         }
 
-        Retorno IRespostaServico.InserirResposta(Resposta resposta)
+        public Retorno InserirResposta(Resposta resposta)
         {
             Retorno retorno = new Retorno();
             if (resposta == null)

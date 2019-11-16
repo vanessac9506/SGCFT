@@ -4,12 +4,17 @@
 }
 
 @section scripts {
+    @Scripts.Render("~/bundles/unobtrusive")
     <script type="text/javascript">
         var link = '@Url.Action("ExibirConteudo", "Video", new { titulo = "titulo", id = "identificador" })';
         var questionarios = [];
         $(document).ready(function () {
             $("#loading").remove();
             $(".page").removeClass("page");
+
+            $("#btnFecharModalPerguntas").click(function () {
+                $("#modal-questionario").modal('hide');
+            });
         });
 
         function trocarvideo(titulo, id) {
@@ -36,6 +41,8 @@
                         for (var i = 0; i < retorno.length; i++) {
                             var template = document.getElementById('template-questionario').innerHTML;
                             template = template.replace('{{Pergunta}}', retorno[i].Pergunta);
+                            template = template.replace('{{IdPergunta}}', retorno[i].IdPergunta);
+                            template = template.replace('{{Indice}}', i);
                             var alternativas = "";
                             for (var j = 0; j < retorno[i].Alternativas.length; j++) {
                                 var templateAlternativa = document.getElementById('template-alternativa').innerHTML;
@@ -54,6 +61,19 @@
                     }
                 });
         }
+
+        function sucessoResposta(retorno) {
+            alert('ok');
+        }
+
+        function falhaResposta(retorno) {
+            alert('nook');
+        }
+
+        function enviar() {
+            $("#formResposta").submit();
+        }
+
     </script>
 }
 
@@ -105,15 +125,20 @@
             <div class="modal-header">
                 <h4 class="col-12 modal-title text-center">Questionário do módulo: @Model.Titulo</h4>
             </div>
-            <div class="modal-body" id="conteudo-modal">
-                
+            <div class="modal-body">
+                @using (Ajax.BeginForm("EnvioAlternativa", "Resposta", new { }, new AjaxOptions() { HttpMethod = "POST", OnSuccess = "sucessoResposta", OnFailure = "falhaResposta" }, new { id = "formResposta", @class = "rd-form" }))
+                {
+                    <div id="conteudo-modal">
+                    </div>
+                }
+
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-outline-secondary" data-dismiss="modal" aria-label="Cancelar operação" id="btnFecharModalTipoPublicacao">
+                <button type="button" class="btn btn-sm btn-outline-secondary" data-dismiss="modal" aria-label="Cancelar operação" id="btnFecharModalPerguntas">
                     <i class="fas fa-times-circle"></i> Cancelar
                 </button>
-                <button type="button" class="btn btn-sm btn-outline-danger" id="btnExcluir" onclick="excluirAplicacao(this);" aria-label="Confirmar operação">
-                    <i class="fas fa-trash-alt"></i> Excluir
+                <button type="button" class="btn btn-sm btn-outline-success" id="btnEnviar" onclick="enviar(this);" aria-label="Confirmar operação">
+                    <i class="fas fa-trash-alt"></i> Enviar
                 </button>
             </div>
         </div>
@@ -125,11 +150,12 @@
         <div class="col-8 offset-2" style="border-bottom:1px solid silver; padding-bottom: 10px;">
             <h4 class="text-center" style="font-weight:bold;">
                 {{Pergunta}}
+                <input type="hidden" name="IdsPergunta[{{Indice}}]" value="{{IdPergunta}}" aria-label="Alternativa">
             </h4>
             <div class="form-group">
                 {{Alternativas}}
             </div>
-            
+
         </div>
     </div>
 </script>
@@ -138,7 +164,7 @@
     <div class="input-group">
         <div class="input-group-prepend">
             <div class="input-group-text">
-                <input type="radio" name="OpcaoEscolhida[{{Indice}}]" value="{{Id}}" aria-label="Alternativa">
+                <input type="radio" name="IdsAlternativasEscolhida[{{Indice}}]" value="{{Id}}" aria-label="Alternativa">
             </div>
         </div>
         <span style="border: 1px solid #e9ecef;padding: 5px;border-radius: 0.25rem;width: 90%;">{{Alternativa}}</span>
