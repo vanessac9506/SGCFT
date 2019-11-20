@@ -42,7 +42,7 @@ namespace SGCFT.Dados.Repositorios
         public List<Treinamento> SelecionarPrincipaisVideos()
         {
             var query = _contexto.Treinamento.Where(x => x.Modulos.Count > 0).AsQueryable().Include(x => x.Autor);
-            var lista = query.OrderBy(x => x.Id).Skip(0).Take(3).ToList();
+            var lista = query.OrderBy(x => x.Id).Skip(0).Take(9).ToList();
             return lista;
         }
 
