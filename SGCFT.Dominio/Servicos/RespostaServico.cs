@@ -13,9 +13,12 @@ namespace SGCFT.Dominio.Servicos
     public class RespostaServico : IRespostaServico
     {
         private IRespostaRepositorio _respostaRepositorio;
-        public RespostaServico(IRespostaRepositorio respostaRepositorio)
+        private readonly IAlternativaRepositorio _alternativaRepositorio;
+
+        public RespostaServico(IRespostaRepositorio respostaRepositorio, IAlternativaRepositorio alternativaRepositorio)
         {
             this._respostaRepositorio = respostaRepositorio;
+            this._alternativaRepositorio = alternativaRepositorio;
         }
 
         public Retorno InserirResposta(Resposta resposta)
@@ -32,19 +35,17 @@ namespace SGCFT.Dominio.Servicos
                 _respostaRepositorio.Inserir(resposta);
             return retorno;
         }
-        public Retorno AlterarResposta(Resposta resposta)
-        {
-            Retorno retorno = new Retorno();
-            if (resposta == null)
-            {
-                retorno.AdicionarErro("Resposta não informada");
-                return retorno;
-            }
-            retorno = resposta.ValidarDominio();
-            if (retorno.Sucesso)
-                _respostaRepositorio.Alterar(resposta);
 
-            return retorno;
+        public List<ResultadoResposta> SelecionarResultadoQuestionario(List<int> idsRespostas)
+        {
+            List<ResultadoResposta> resultado = new List<ResultadoResposta>();
+            var respostas = _respostaRepositorio.SelecionarRespostasPorIds(idsRespostas);
+            foreach (var resposta in respostas)
+            {
+                var alternativaCorreta = _alternativaRepositorio.AlternativaCorreta(resposta.IdPergunta);
+                resultado.Add(new ResultadoResposta(resposta.IdPergunta, resposta.IdAlternativaEscolhida, alternativaCorreta.Id));
+            }
+            return resultado;
         }
     }
 }

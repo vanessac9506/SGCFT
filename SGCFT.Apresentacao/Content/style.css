@@ -197,4 +197,4 @@
 
 .modal{
     z-index:1082;
-}
+}.sucesso-resposta {    color: #26ab2e;    border: 2px solid #26ab2e;}.falha-resposta {    color: #dc3545;    border: 2px solid #dc3545;}

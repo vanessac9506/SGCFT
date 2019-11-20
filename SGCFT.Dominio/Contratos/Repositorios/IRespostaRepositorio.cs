@@ -10,6 +10,6 @@ namespace SGCFT.Dominio.Contratos.Repositorios
     public interface IRespostaRepositorio
     {
         void Inserir(Resposta resposta);
-        void Alterar(Resposta resposta);
+        List<Resposta> SelecionarRespostasPorIds(List<int> ids);
     }
 }

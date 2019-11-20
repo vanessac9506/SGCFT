@@ -30,6 +30,11 @@ namespace SGCFT.Dados.Repositorios
             _contexto.SaveChanges();
         }
 
+        public Alternativa AlternativaCorreta(int idPergunta)
+        {
+            return _contexto.Alternativa.Where(x => x.IdPergunta == idPergunta && x.CertoErrado).Single();
+        }
+
         public void Dispose()
         {
             if (_contexto != null)

@@ -30,6 +30,7 @@
         function sucesso(data) {
             if (data.Sucesso) {
                 $("#mensagemSucesso").show('slow');
+                $('html, body').animate({ scrollTop: $('#header-page').offset().top }, 'slow');
             } else {
                 $(data.Mensagens).each(function () {
                     $("#mensagemFalha").html("");

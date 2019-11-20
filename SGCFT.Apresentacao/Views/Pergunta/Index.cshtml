@@ -60,6 +60,8 @@
         function sucesso(data) {
             if (data.Sucesso) {
                 $("#mensagemSucesso").show('slow');
+                $('html, body').animate({ scrollTop: $('#header-page').offset().top }, 'slow');
+                
             } else {
                 $(data.Mensagens).each(function () {
                     $("#mensagemFalha").html("");
@@ -85,7 +87,7 @@
             <div class="col-lg-12">
                 <div class="card border-0">
                     <div class="card-header">
-                        <h3 class="text-center"><i class="fas fa-plus-circle"></i> Novo Cadastro de Perguntas</h3>
+                        <h3 class="text-center" id="titulo-pagina"><i class="fas fa-plus-circle"></i> Novo Cadastro de Perguntas</h3>
                     </div>
                     <div class="card-body">
 

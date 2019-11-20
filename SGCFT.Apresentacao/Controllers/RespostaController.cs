@@ -18,7 +18,7 @@ namespace SGCFT.Apresentacao.Controllers
 
         public RespostaController()
         {
-            _servicoRespostas = new RespostaServico(new RespostaRepositorio());
+            _servicoRespostas = new RespostaServico(new RespostaRepositorio(), new AlternativaRepositorio());
         }
 
         [HttpPost]
@@ -31,7 +31,10 @@ namespace SGCFT.Apresentacao.Controllers
                 var retorno = _servicoRespostas.InserirResposta(resposta);
                 retornosRespostas.Add(retorno);
             }
-            return Json(retornosRespostas);
+
+            var resultadoRespostas = _servicoRespostas.SelecionarResultadoQuestionario(respostas.Select(x => x.Id).ToList());
+
+            return Json(new { Erro = retornosRespostas.Any(x => !x.Sucesso), Resultado = resultadoRespostas });
         }
     }
 }

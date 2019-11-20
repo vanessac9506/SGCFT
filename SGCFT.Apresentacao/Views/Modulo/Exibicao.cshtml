@@ -48,6 +48,7 @@
                                 var templateAlternativa = document.getElementById('template-alternativa').innerHTML;
                                 templateAlternativa = templateAlternativa.replace("{{Indice}}", i);
                                 templateAlternativa = templateAlternativa.replace("{{Id}}", retorno[i].Alternativas[j].Id);
+                                templateAlternativa = templateAlternativa.replace("{{Id}}", retorno[i].Alternativas[j].Id);
                                 templateAlternativa = templateAlternativa.replace("{{Alternativa}}", retorno[i].Alternativas[j].Texto);
                                 alternativas = alternativas + templateAlternativa;
                             }
@@ -63,7 +64,18 @@
         }
 
         function sucessoResposta(retorno) {
-            alert('ok');
+            if (retorno.Erro) {
+                alert('Erro não esperado ao enviar suas respostas');
+            } else {
+                $(retorno.Resultado).each(function () {
+                    var elemento = $("#alternativa_" + this.IdAlternativaCorreta);
+                    elemento.addClass("sucesso-resposta");
+                    if (!this.Acertou) {
+                        var elementoEscolhido = $("#alternativa_" + this.IdAlternativaEscolhida);
+                        elementoEscolhido.addClass("falha-resposta");
+                    }
+                });
+            }
         }
 
         function falhaResposta(retorno) {
@@ -161,7 +173,7 @@
 </script>
 
 <script type="text/template" id="template-alternativa">
-    <div class="input-group">
+    <div class="input-group" id="alternativa_{{Id}}">
         <div class="input-group-prepend">
             <div class="input-group-text">
                 <input type="radio" name="IdsAlternativasEscolhida[{{Indice}}]" value="{{Id}}" aria-label="Alternativa">

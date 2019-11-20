@@ -11,5 +11,6 @@ namespace SGCFT.Dominio.Contratos.Repositorios
     {
         void Inserir(Alternativa alternativa);
         void Alterar(Alternativa alternativa);
+        Alternativa AlternativaCorreta(int idPergunta);
     }
 }

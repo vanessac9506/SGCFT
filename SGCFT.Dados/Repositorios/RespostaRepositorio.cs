@@ -1,11 +1,8 @@
 ﻿using SGCFT.Dados.Contextos;
 using SGCFT.Dominio.Contratos.Repositorios;
 using SGCFT.Dominio.Entidades;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SGCFT.Dados.Repositorios
 {
@@ -16,11 +13,6 @@ namespace SGCFT.Dados.Repositorios
         public RespostaRepositorio()
         {
             _contexto = new Contexto();
-        }
-        public void Alterar(Resposta resposta)
-        {
-            _contexto.Entry<Resposta>(resposta).State = System.Data.Entity.EntityState.Modified;
-            _contexto.SaveChanges();
         }
 
         public void Inserir(Resposta resposta)
@@ -35,6 +27,12 @@ namespace SGCFT.Dados.Repositorios
             {
                 _contexto.Dispose();
             }
+        }
+
+        public List<Resposta> SelecionarRespostasPorIds(List<int> ids)
+        {
+            var respostas = _contexto.Resposta.Where(x => ids.Contains(x.Id)).ToList();
+            return respostas;
         }
     }
 }
