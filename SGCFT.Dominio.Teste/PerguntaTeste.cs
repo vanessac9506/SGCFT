@@ -1,11 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SGCFT.Dominio.Entidades;
 using SGCFT.Utilitario;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SGCFT.Dominio.Teste
 {
@@ -17,8 +13,8 @@ namespace SGCFT.Dominio.Teste
         {
             string texto = "Qual seu nome?";
             int idAutor = 3;
-
-            Pergunta pergunta = new Pergunta(texto,idAutor);
+            int idModulo = 2;
+            Pergunta pergunta = new Pergunta(texto,idAutor, idModulo);
             Retorno perguntaValida = pergunta.ValidarDominio();
 
             Assert.AreEqual(true, perguntaValida.Sucesso);
@@ -30,8 +26,8 @@ namespace SGCFT.Dominio.Teste
         {
             string texto = null;
             int autor = 3;
-
-            Pergunta pergunta = new Pergunta(texto,autor);
+            int idModulo = 2;
+            Pergunta pergunta = new Pergunta(texto,autor, idModulo);
             Retorno perguntaValida = pergunta.ValidarDominio();
 
             Assert.AreEqual(false, perguntaValida.Sucesso);
@@ -43,8 +39,8 @@ namespace SGCFT.Dominio.Teste
         {
             string texto = null;
             int autor = ' ';
-
-            Pergunta pergunta = new Pergunta(texto, autor);
+            int idModulo = 2;
+            Pergunta pergunta = new Pergunta(texto, autor, idModulo);
             Retorno perguntaValida = pergunta.ValidarDominio();
 
             Assert.AreEqual(false, perguntaValida.Sucesso);
